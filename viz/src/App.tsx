@@ -39,6 +39,7 @@ import DFA from "./pages/mlc/DFA"
 import NFA from "./pages/mlc/NFA"
 import RegexKleene from "./pages/mlc/RegexKleene"
 import Pumping from "./pages/mlc/Pumping"
+import Turing from "./pages/mlc/Turing"
 import { TOPICS } from "./topics"
 
 export default function App() {
@@ -99,6 +100,7 @@ export default function App() {
           <Route path="/mlc/nfa" element={<NFA />} />
           <Route path="/mlc/regex-kleene" element={<RegexKleene />} />
           <Route path="/mlc/pumping" element={<Pumping />} />
+          <Route path="/mlc/turing" element={<Turing />} />
           {TOPICS.filter((t) => t.status === "soon").map((t) => (
             <Route key={t.slug} path={`/${t.slug}`} element={<Soon topic={t} />} />
           ))}

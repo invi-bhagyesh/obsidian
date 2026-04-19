@@ -101,5 +101,5 @@ export const TOPICS: Topic[] = [
   { slug: "mlc/pumping", subject: "MLC", number: 9, title: "Pumping Lemma",
     blurb: "Play the adversary game for non-regularity.", status: "live" },
   { slug: "mlc/turing", subject: "MLC", number: 10, title: "Turing Machines",
-    blurb: "Tape animator. Universal TM & halting problem intuition.", status: "soon" },
+    blurb: "Tape animator. Universal TM & halting problem intuition.", status: "live" },
 ]
