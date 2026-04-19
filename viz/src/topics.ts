@@ -91,7 +91,7 @@ export const TOPICS: Topic[] = [
   { slug: "mlc/modus-ponens", subject: "MLC", number: 4, title: "Axiomatic Propositional Calculus",
     blurb: "Chain axioms and MP to derive theorems.", status: "live" },
   { slug: "mlc/fol", subject: "MLC", number: 5, title: "First-Order Logic",
-    blurb: "Quantifier scope, free/bound variables, substitution.", status: "soon" },
+    blurb: "Quantifier scope, free/bound variables, substitution.", status: "live" },
   { slug: "mlc/dfa", subject: "MLC", number: 6, title: "DFA Simulator",
     blurb: "Build a DFA, feed it strings, watch states light up.", status: "soon" },
   { slug: "mlc/nfa", subject: "MLC", number: 7, title: "NFA → DFA",

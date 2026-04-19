@@ -34,6 +34,7 @@ import TruthTables from "./pages/mlc/TruthTables"
 import CnfDnf from "./pages/mlc/CnfDnf"
 import ProofTrees from "./pages/mlc/ProofTrees"
 import ModusPonens from "./pages/mlc/ModusPonens"
+import FOL from "./pages/mlc/FOL"
 import { TOPICS } from "./topics"
 
 export default function App() {
@@ -89,6 +90,7 @@ export default function App() {
           <Route path="/mlc/cnf-dnf" element={<CnfDnf />} />
           <Route path="/mlc/proof-trees" element={<ProofTrees />} />
           <Route path="/mlc/modus-ponens" element={<ModusPonens />} />
+          <Route path="/mlc/fol" element={<FOL />} />
           {TOPICS.filter((t) => t.status === "soon").map((t) => (
             <Route key={t.slug} path={`/${t.slug}`} element={<Soon topic={t} />} />
           ))}
