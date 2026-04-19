@@ -93,7 +93,7 @@ export const TOPICS: Topic[] = [
   { slug: "mlc/fol", subject: "MLC", number: 5, title: "First-Order Logic",
     blurb: "Quantifier scope, free/bound variables, substitution.", status: "live" },
   { slug: "mlc/dfa", subject: "MLC", number: 6, title: "DFA Simulator",
-    blurb: "Build a DFA, feed it strings, watch states light up.", status: "soon" },
+    blurb: "Build a DFA, feed it strings, watch states light up.", status: "live" },
   { slug: "mlc/nfa", subject: "MLC", number: 7, title: "NFA → DFA",
     blurb: "Subset construction animated.", status: "soon" },
   { slug: "mlc/regex-kleene", subject: "MLC", number: 8, title: "Regex ↔ Automata",
