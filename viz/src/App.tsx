@@ -28,6 +28,7 @@ import LineIntegrals from "./pages/vacv/LineIntegrals"
 import GreenStokes from "./pages/vacv/GreenStokes"
 import ComplexFunctions from "./pages/vacv/ComplexFunctions"
 import CREquations from "./pages/vacv/CREquations"
+import ContourIntegrals from "./pages/vacv/ContourIntegrals"
 import { TOPICS } from "./topics"
 
 export default function App() {
@@ -77,6 +78,7 @@ export default function App() {
           <Route path="/vacv/greens-stokes" element={<GreenStokes />} />
           <Route path="/vacv/complex-functions" element={<ComplexFunctions />} />
           <Route path="/vacv/cr-equations" element={<CREquations />} />
+          <Route path="/vacv/contour-integrals" element={<ContourIntegrals />} />
           {TOPICS.filter((t) => t.status === "soon").map((t) => (
             <Route key={t.slug} path={`/${t.slug}`} element={<Soon topic={t} />} />
           ))}

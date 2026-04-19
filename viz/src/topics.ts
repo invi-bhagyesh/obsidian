@@ -77,7 +77,7 @@ export const TOPICS: Topic[] = [
   { slug: "vacv/cr-equations", subject: "VACV", number: 6, title: "Cauchy–Riemann",
     blurb: "Conformal maps preserve angles — watch a grid deform.", status: "live" },
   { slug: "vacv/contour-integrals", subject: "VACV", number: 7, title: "Contour Integrals & Residues",
-    blurb: "Drag poles inside/outside a contour.", status: "soon" },
+    blurb: "Drag poles inside/outside a contour.", status: "live" },
   { slug: "vacv/branch-cuts", subject: "VACV", number: 8, title: "Branch Cuts of log z",
     blurb: "Multi-sheeted surface of the complex log.", status: "soon" },
 
