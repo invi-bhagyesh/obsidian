@@ -37,6 +37,7 @@ import ModusPonens from "./pages/mlc/ModusPonens"
 import FOL from "./pages/mlc/FOL"
 import DFA from "./pages/mlc/DFA"
 import NFA from "./pages/mlc/NFA"
+import RegexKleene from "./pages/mlc/RegexKleene"
 import { TOPICS } from "./topics"
 
 export default function App() {
@@ -95,6 +96,7 @@ export default function App() {
           <Route path="/mlc/fol" element={<FOL />} />
           <Route path="/mlc/dfa" element={<DFA />} />
           <Route path="/mlc/nfa" element={<NFA />} />
+          <Route path="/mlc/regex-kleene" element={<RegexKleene />} />
           {TOPICS.filter((t) => t.status === "soon").map((t) => (
             <Route key={t.slug} path={`/${t.slug}`} element={<Soon topic={t} />} />
           ))}
