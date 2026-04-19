@@ -65,7 +65,7 @@ export const TOPICS: Topic[] = [
 
   // --- VACV ---
   { slug: "vacv/vector-fields", subject: "VACV", number: 1, title: "Vector Fields",
-    blurb: "Drag to reshape a field, see streamlines in real time.", status: "soon" },
+    blurb: "Drag to reshape a field, see streamlines in real time.", status: "live" },
   { slug: "vacv/divergence-curl", subject: "VACV", number: 2, title: "Divergence & Curl",
     blurb: "Scalar-field heatmaps of ∇·F and ∇×F.", status: "soon" },
   { slug: "vacv/line-integrals", subject: "VACV", number: 3, title: "Line Integrals",
