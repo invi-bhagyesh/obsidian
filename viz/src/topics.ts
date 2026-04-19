@@ -41,7 +41,7 @@ export const TOPICS: Topic[] = [
   { slug: "ra/differentiation", subject: "RA", number: 11, title: "Differentiation & MVT",
     blurb: "Rolle, mean value theorem, tangent lines that must exist.", status: "live" },
   { slug: "ra/riemann", subject: "RA", number: 12, title: "Riemann(-Stieltjes) Integral",
-    blurb: "Upper/lower Darboux sums squeeze together.", status: "soon" },
+    blurb: "Upper/lower Darboux sums squeeze together.", status: "live" },
 
   // --- Algebraic Structures ---
   { slug: "as/groups", subject: "AS", number: 1, title: "Groups — Cayley Tables",
