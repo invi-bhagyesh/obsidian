@@ -31,7 +31,7 @@ export const TOPICS: Topic[] = [
   { slug: "ra/compactness", subject: "RA", number: 6, title: "Compactness",
     blurb: "Heine–Borel: find a finite subcover of any open cover.", status: "live" },
   { slug: "ra/sequences", subject: "RA", number: 7, title: "Sequences & Limits",
-    blurb: "ε–N game. Pick ε, find N.", status: "soon" },
+    blurb: "ε–N game. Pick ε, find N.", status: "live" },
   { slug: "ra/cauchy", subject: "RA", number: 8, title: "Cauchy Sequences",
     blurb: "Terms cluster together without knowing the limit.", status: "soon" },
   { slug: "ra/series", subject: "RA", number: 9, title: "Series & Convergence Tests",
