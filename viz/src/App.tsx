@@ -30,6 +30,7 @@ import ComplexFunctions from "./pages/vacv/ComplexFunctions"
 import CREquations from "./pages/vacv/CREquations"
 import ContourIntegrals from "./pages/vacv/ContourIntegrals"
 import BranchCuts from "./pages/vacv/BranchCuts"
+import TruthTables from "./pages/mlc/TruthTables"
 import { TOPICS } from "./topics"
 
 export default function App() {
@@ -81,6 +82,7 @@ export default function App() {
           <Route path="/vacv/cr-equations" element={<CREquations />} />
           <Route path="/vacv/contour-integrals" element={<ContourIntegrals />} />
           <Route path="/vacv/branch-cuts" element={<BranchCuts />} />
+          <Route path="/mlc/truth-tables" element={<TruthTables />} />
           {TOPICS.filter((t) => t.status === "soon").map((t) => (
             <Route key={t.slug} path={`/${t.slug}`} element={<Soon topic={t} />} />
           ))}

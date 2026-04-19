@@ -83,7 +83,7 @@ export const TOPICS: Topic[] = [
 
   // --- MLC ---
   { slug: "mlc/truth-tables", subject: "MLC", number: 1, title: "Truth Tables & Connectives",
-    blurb: "Type any formula, get its truth table and NF.", status: "soon" },
+    blurb: "Type any formula, get its truth table and NF.", status: "live" },
   { slug: "mlc/cnf-dnf", subject: "MLC", number: 2, title: "CNF / DNF Conversion",
     blurb: "Step-through normalization.", status: "soon" },
   { slug: "mlc/proof-trees", subject: "MLC", number: 3, title: "Proof Trees (Natural Deduction)",
