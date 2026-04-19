@@ -45,7 +45,7 @@ export const TOPICS: Topic[] = [
 
   // --- Algebraic Structures ---
   { slug: "as/groups", subject: "AS", number: 1, title: "Groups — Cayley Tables",
-    blurb: "Z_n, D_n, S_n side by side. Click cells to trace products.", status: "soon" },
+    blurb: "Z_n, D_n, S_n side by side. Click cells to trace products.", status: "live" },
   { slug: "as/subgroup-lattice", subject: "AS", number: 2, title: "Subgroup Lattice",
     blurb: "Hasse diagram of subgroups for small groups.", status: "soon" },
   { slug: "as/cosets", subject: "AS", number: 3, title: "Cosets & Lagrange",

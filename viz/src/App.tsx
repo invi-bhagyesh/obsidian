@@ -13,6 +13,7 @@ import Series from "./pages/ra/Series"
 import Continuity from "./pages/ra/Continuity"
 import Differentiation from "./pages/ra/Differentiation"
 import Riemann from "./pages/ra/Riemann"
+import Groups from "./pages/as/Groups"
 import { TOPICS } from "./topics"
 
 export default function App() {
@@ -47,6 +48,7 @@ export default function App() {
           <Route path="/ra/continuity" element={<Continuity />} />
           <Route path="/ra/differentiation" element={<Differentiation />} />
           <Route path="/ra/riemann" element={<Riemann />} />
+          <Route path="/as/groups" element={<Groups />} />
           {TOPICS.filter((t) => t.status === "soon").map((t) => (
             <Route key={t.slug} path={`/${t.slug}`} element={<Soon topic={t} />} />
           ))}
