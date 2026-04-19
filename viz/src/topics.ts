@@ -71,7 +71,7 @@ export const TOPICS: Topic[] = [
   { slug: "vacv/line-integrals", subject: "VACV", number: 3, title: "Line Integrals",
     blurb: "Draw a curve, watch ∫F·dr accumulate.", status: "live" },
   { slug: "vacv/greens-stokes", subject: "VACV", number: 4, title: "Green, Stokes, Divergence Theorems",
-    blurb: "Boundary vs. interior — side-by-side computation.", status: "soon" },
+    blurb: "Boundary vs. interior — side-by-side computation.", status: "live" },
   { slug: "vacv/complex-functions", subject: "VACV", number: 5, title: "Complex Functions — Domain Coloring",
     blurb: "z² , 1/z, exp z rendered via hue = arg, brightness = |f|.", status: "soon" },
   { slug: "vacv/cr-equations", subject: "VACV", number: 6, title: "Cauchy–Riemann",
