@@ -47,7 +47,7 @@ export const TOPICS: Topic[] = [
   { slug: "as/groups", subject: "AS", number: 1, title: "Groups — Cayley Tables",
     blurb: "Z_n, D_n, S_n side by side. Click cells to trace products.", status: "live" },
   { slug: "as/subgroup-lattice", subject: "AS", number: 2, title: "Subgroup Lattice",
-    blurb: "Hasse diagram of subgroups for small groups.", status: "soon" },
+    blurb: "Hasse diagram of subgroups for small groups.", status: "live" },
   { slug: "as/cosets", subject: "AS", number: 3, title: "Cosets & Lagrange",
     blurb: "Partition a group by left cosets of H.", status: "soon" },
   { slug: "as/quotient", subject: "AS", number: 4, title: "Quotient Groups",

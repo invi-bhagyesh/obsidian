@@ -14,6 +14,7 @@ import Continuity from "./pages/ra/Continuity"
 import Differentiation from "./pages/ra/Differentiation"
 import Riemann from "./pages/ra/Riemann"
 import Groups from "./pages/as/Groups"
+import SubgroupLattice from "./pages/as/SubgroupLattice"
 import { TOPICS } from "./topics"
 
 export default function App() {
@@ -49,6 +50,7 @@ export default function App() {
           <Route path="/ra/differentiation" element={<Differentiation />} />
           <Route path="/ra/riemann" element={<Riemann />} />
           <Route path="/as/groups" element={<Groups />} />
+          <Route path="/as/subgroup-lattice" element={<SubgroupLattice />} />
           {TOPICS.filter((t) => t.status === "soon").map((t) => (
             <Route key={t.slug} path={`/${t.slug}`} element={<Soon topic={t} />} />
           ))}
