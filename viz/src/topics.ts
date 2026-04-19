@@ -61,7 +61,7 @@ export const TOPICS: Topic[] = [
   { slug: "as/polynomial-rings", subject: "AS", number: 8, title: "Polynomial Rings",
     blurb: "Division, gcd, irreducibility in F[x].", status: "live" },
   { slug: "as/fields", subject: "AS", number: 9, title: "Fields & Extensions",
-    blurb: "Build F_p, F_{p^n}, see minimal polynomials.", status: "soon" },
+    blurb: "Build F_p, F_{p^n}, see minimal polynomials.", status: "live" },
 
   // --- VACV ---
   { slug: "vacv/vector-fields", subject: "VACV", number: 1, title: "Vector Fields",
