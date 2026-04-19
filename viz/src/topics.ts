@@ -69,7 +69,7 @@ export const TOPICS: Topic[] = [
   { slug: "vacv/divergence-curl", subject: "VACV", number: 2, title: "Divergence & Curl",
     blurb: "Scalar-field heatmaps of ∇·F and ∇×F.", status: "live" },
   { slug: "vacv/line-integrals", subject: "VACV", number: 3, title: "Line Integrals",
-    blurb: "Draw a curve, watch ∫F·dr accumulate.", status: "soon" },
+    blurb: "Draw a curve, watch ∫F·dr accumulate.", status: "live" },
   { slug: "vacv/greens-stokes", subject: "VACV", number: 4, title: "Green, Stokes, Divergence Theorems",
     blurb: "Boundary vs. interior — side-by-side computation.", status: "soon" },
   { slug: "vacv/complex-functions", subject: "VACV", number: 5, title: "Complex Functions — Domain Coloring",

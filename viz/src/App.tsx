@@ -24,6 +24,7 @@ import PolynomialRings from "./pages/as/PolynomialRings"
 import Fields from "./pages/as/Fields"
 import VectorFields from "./pages/vacv/VectorFields"
 import DivergenceCurl from "./pages/vacv/DivergenceCurl"
+import LineIntegrals from "./pages/vacv/LineIntegrals"
 import { TOPICS } from "./topics"
 
 export default function App() {
@@ -69,6 +70,7 @@ export default function App() {
           <Route path="/as/fields" element={<Fields />} />
           <Route path="/vacv/vector-fields" element={<VectorFields />} />
           <Route path="/vacv/divergence-curl" element={<DivergenceCurl />} />
+          <Route path="/vacv/line-integrals" element={<LineIntegrals />} />
           {TOPICS.filter((t) => t.status === "soon").map((t) => (
             <Route key={t.slug} path={`/${t.slug}`} element={<Soon topic={t} />} />
           ))}
