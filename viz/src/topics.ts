@@ -23,7 +23,7 @@ export const TOPICS: Topic[] = [
   { slug: "ra/inequalities", subject: "RA", number: 2, title: "Inequalities",
     blurb: "AM–GM, Cauchy–Schwarz, triangle inequality — visualized geometrically.", status: "live" },
   { slug: "ra/sup-inf", subject: "RA", number: 3, title: "Supremum & Infimum",
-    blurb: "Build sets on a number line, watch sup and inf emerge.", status: "soon" },
+    blurb: "Build sets on a number line, watch sup and inf emerge.", status: "live" },
   { slug: "ra/countability", subject: "RA", number: 4, title: "Finite, Countable, Uncountable",
     blurb: "Cantor diagonalization, animated.", status: "soon" },
   { slug: "ra/topology-of-r", subject: "RA", number: 5, title: "Open & Closed Sets",

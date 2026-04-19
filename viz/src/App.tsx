@@ -3,6 +3,7 @@ import Home from "./pages/Home"
 import Soon from "./pages/Soon"
 import RealNumbers from "./pages/ra/RealNumbers"
 import Inequalities from "./pages/ra/Inequalities"
+import SupInf from "./pages/ra/SupInf"
 import { TOPICS } from "./topics"
 
 export default function App() {
@@ -27,6 +28,7 @@ export default function App() {
           <Route path="/" element={<Home />} />
           <Route path="/ra/real-numbers" element={<RealNumbers />} />
           <Route path="/ra/inequalities" element={<Inequalities />} />
+          <Route path="/ra/sup-inf" element={<SupInf />} />
           {TOPICS.filter((t) => t.status === "soon").map((t) => (
             <Route key={t.slug} path={`/${t.slug}`} element={<Soon topic={t} />} />
           ))}
