@@ -26,6 +26,7 @@ import VectorFields from "./pages/vacv/VectorFields"
 import DivergenceCurl from "./pages/vacv/DivergenceCurl"
 import LineIntegrals from "./pages/vacv/LineIntegrals"
 import GreenStokes from "./pages/vacv/GreenStokes"
+import ComplexFunctions from "./pages/vacv/ComplexFunctions"
 import { TOPICS } from "./topics"
 
 export default function App() {
@@ -73,6 +74,7 @@ export default function App() {
           <Route path="/vacv/divergence-curl" element={<DivergenceCurl />} />
           <Route path="/vacv/line-integrals" element={<LineIntegrals />} />
           <Route path="/vacv/greens-stokes" element={<GreenStokes />} />
+          <Route path="/vacv/complex-functions" element={<ComplexFunctions />} />
           {TOPICS.filter((t) => t.status === "soon").map((t) => (
             <Route key={t.slug} path={`/${t.slug}`} element={<Soon topic={t} />} />
           ))}

@@ -73,7 +73,7 @@ export const TOPICS: Topic[] = [
   { slug: "vacv/greens-stokes", subject: "VACV", number: 4, title: "Green, Stokes, Divergence Theorems",
     blurb: "Boundary vs. interior — side-by-side computation.", status: "live" },
   { slug: "vacv/complex-functions", subject: "VACV", number: 5, title: "Complex Functions — Domain Coloring",
-    blurb: "z² , 1/z, exp z rendered via hue = arg, brightness = |f|.", status: "soon" },
+    blurb: "z² , 1/z, exp z rendered via hue = arg, brightness = |f|.", status: "live" },
   { slug: "vacv/cr-equations", subject: "VACV", number: 6, title: "Cauchy–Riemann",
     blurb: "Conformal maps preserve angles — watch a grid deform.", status: "soon" },
   { slug: "vacv/contour-integrals", subject: "VACV", number: 7, title: "Contour Integrals & Residues",
