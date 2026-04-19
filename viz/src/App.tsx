@@ -8,6 +8,7 @@ import Countability from "./pages/ra/Countability"
 import Topology from "./pages/ra/Topology"
 import Compactness from "./pages/ra/Compactness"
 import Sequences from "./pages/ra/Sequences"
+import Cauchy from "./pages/ra/Cauchy"
 import { TOPICS } from "./topics"
 
 export default function App() {
@@ -37,6 +38,7 @@ export default function App() {
           <Route path="/ra/topology-of-r" element={<Topology />} />
           <Route path="/ra/compactness" element={<Compactness />} />
           <Route path="/ra/sequences" element={<Sequences />} />
+          <Route path="/ra/cauchy" element={<Cauchy />} />
           {TOPICS.filter((t) => t.status === "soon").map((t) => (
             <Route key={t.slug} path={`/${t.slug}`} element={<Soon topic={t} />} />
           ))}

@@ -33,7 +33,7 @@ export const TOPICS: Topic[] = [
   { slug: "ra/sequences", subject: "RA", number: 7, title: "Sequences & Limits",
     blurb: "ε–N game. Pick ε, find N.", status: "live" },
   { slug: "ra/cauchy", subject: "RA", number: 8, title: "Cauchy Sequences",
-    blurb: "Terms cluster together without knowing the limit.", status: "soon" },
+    blurb: "Terms cluster together without knowing the limit.", status: "live" },
   { slug: "ra/series", subject: "RA", number: 9, title: "Series & Convergence Tests",
     blurb: "Comparison, ratio, root, integral — live test outcomes.", status: "soon" },
   { slug: "ra/continuity", subject: "RA", number: 10, title: "Continuity (ε–δ)",
