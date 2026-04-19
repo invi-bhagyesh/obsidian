@@ -85,7 +85,7 @@ export const TOPICS: Topic[] = [
   { slug: "mlc/truth-tables", subject: "MLC", number: 1, title: "Truth Tables & Connectives",
     blurb: "Type any formula, get its truth table and NF.", status: "live" },
   { slug: "mlc/cnf-dnf", subject: "MLC", number: 2, title: "CNF / DNF Conversion",
-    blurb: "Step-through normalization.", status: "soon" },
+    blurb: "Step-through normalization.", status: "live" },
   { slug: "mlc/proof-trees", subject: "MLC", number: 3, title: "Proof Trees (Natural Deduction)",
     blurb: "Build proofs in propositional calculus interactively.", status: "soon" },
   { slug: "mlc/modus-ponens", subject: "MLC", number: 4, title: "Axiomatic Propositional Calculus",

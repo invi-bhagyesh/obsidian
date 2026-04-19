@@ -31,6 +31,7 @@ import CREquations from "./pages/vacv/CREquations"
 import ContourIntegrals from "./pages/vacv/ContourIntegrals"
 import BranchCuts from "./pages/vacv/BranchCuts"
 import TruthTables from "./pages/mlc/TruthTables"
+import CnfDnf from "./pages/mlc/CnfDnf"
 import { TOPICS } from "./topics"
 
 export default function App() {
@@ -83,6 +84,7 @@ export default function App() {
           <Route path="/vacv/contour-integrals" element={<ContourIntegrals />} />
           <Route path="/vacv/branch-cuts" element={<BranchCuts />} />
           <Route path="/mlc/truth-tables" element={<TruthTables />} />
+          <Route path="/mlc/cnf-dnf" element={<CnfDnf />} />
           {TOPICS.filter((t) => t.status === "soon").map((t) => (
             <Route key={t.slug} path={`/${t.slug}`} element={<Soon topic={t} />} />
           ))}
