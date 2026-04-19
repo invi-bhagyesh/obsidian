@@ -25,7 +25,7 @@ export const TOPICS: Topic[] = [
   { slug: "ra/sup-inf", subject: "RA", number: 3, title: "Supremum & Infimum",
     blurb: "Build sets on a number line, watch sup and inf emerge.", status: "live" },
   { slug: "ra/countability", subject: "RA", number: 4, title: "Finite, Countable, Uncountable",
-    blurb: "Cantor diagonalization, animated.", status: "soon" },
+    blurb: "Cantor diagonalization, animated.", status: "live" },
   { slug: "ra/topology-of-r", subject: "RA", number: 5, title: "Open & Closed Sets",
     blurb: "Interior, boundary, closure — drag points, watch regions update.", status: "soon" },
   { slug: "ra/compactness", subject: "RA", number: 6, title: "Compactness",
