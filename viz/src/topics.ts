@@ -95,7 +95,7 @@ export const TOPICS: Topic[] = [
   { slug: "mlc/dfa", subject: "MLC", number: 6, title: "DFA Simulator",
     blurb: "Build a DFA, feed it strings, watch states light up.", status: "live" },
   { slug: "mlc/nfa", subject: "MLC", number: 7, title: "NFA → DFA",
-    blurb: "Subset construction animated.", status: "soon" },
+    blurb: "Subset construction animated.", status: "live" },
   { slug: "mlc/regex-kleene", subject: "MLC", number: 8, title: "Regex ↔ Automata",
     blurb: "Kleene's theorem, both directions.", status: "soon" },
   { slug: "mlc/pumping", subject: "MLC", number: 9, title: "Pumping Lemma",
