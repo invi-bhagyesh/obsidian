@@ -57,7 +57,7 @@ export const TOPICS: Topic[] = [
   { slug: "as/group-actions", subject: "AS", number: 6, title: "Group Actions",
     blurb: "Orbits, stabilizers, Burnside's theorem.", status: "live" },
   { slug: "as/rings", subject: "AS", number: 7, title: "Rings & Ideals",
-    blurb: "Two operation tables. Watch ideals absorb products.", status: "soon" },
+    blurb: "Two operation tables. Watch ideals absorb products.", status: "live" },
   { slug: "as/polynomial-rings", subject: "AS", number: 8, title: "Polynomial Rings",
     blurb: "Division, gcd, irreducibility in F[x].", status: "soon" },
   { slug: "as/fields", subject: "AS", number: 9, title: "Fields & Extensions",
