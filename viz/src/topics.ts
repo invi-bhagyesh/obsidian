@@ -99,7 +99,7 @@ export const TOPICS: Topic[] = [
   { slug: "mlc/regex-kleene", subject: "MLC", number: 8, title: "Regex ↔ Automata",
     blurb: "Kleene's theorem, both directions.", status: "live" },
   { slug: "mlc/pumping", subject: "MLC", number: 9, title: "Pumping Lemma",
-    blurb: "Play the adversary game for non-regularity.", status: "soon" },
+    blurb: "Play the adversary game for non-regularity.", status: "live" },
   { slug: "mlc/turing", subject: "MLC", number: 10, title: "Turing Machines",
     blurb: "Tape animator. Universal TM & halting problem intuition.", status: "soon" },
 ]
