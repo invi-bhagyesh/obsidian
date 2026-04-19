@@ -59,7 +59,7 @@ export const TOPICS: Topic[] = [
   { slug: "as/rings", subject: "AS", number: 7, title: "Rings & Ideals",
     blurb: "Two operation tables. Watch ideals absorb products.", status: "live" },
   { slug: "as/polynomial-rings", subject: "AS", number: 8, title: "Polynomial Rings",
-    blurb: "Division, gcd, irreducibility in F[x].", status: "soon" },
+    blurb: "Division, gcd, irreducibility in F[x].", status: "live" },
   { slug: "as/fields", subject: "AS", number: 9, title: "Fields & Extensions",
     blurb: "Build F_p, F_{p^n}, see minimal polynomials.", status: "soon" },
 
