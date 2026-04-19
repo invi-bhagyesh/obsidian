@@ -266,7 +266,7 @@ function DensityDemo() {
           <div className="text-neutral-300">
             Smallest-denominator rational in the interval:{" "}
             <span className="font-mono text-amber-300">
-              <InlineMath math={`\\frac{${rat.p}}{${rat.q}} = ${fmt(rat.p / rat.q)}`} />
+              <InlineMath math={String.raw`\frac{${rat.p}}{${rat.q}} = ${fmt(rat.p / rat.q)}`} />
             </span>
           </div>
         ) : (
@@ -435,7 +435,7 @@ function CompletenessDemo() {
       <div className="mt-4 text-sm text-neutral-400">
         Latest term:{" "}
         <InlineMath
-          math={`x_{${terms.length - 1}} = \\frac{${latest.p.toString()}}{${latest.q.toString()}}`}
+          math={String.raw`x_{${terms.length - 1}} = \frac{${latest.p.toString()}}{${latest.q.toString()}}`}
         />
       </div>
     </Card>
@@ -467,14 +467,14 @@ export default function RealNumbers() {
 
       <Section title="Statement of the completeness axiom">
         <Card>
-          <BlockMath math={`\\text{Every nonempty subset } S \\subseteq \\mathbb{R} \\text{ that is bounded above has a least upper bound } \\sup S \\in \\mathbb{R}.`} />
+          <BlockMath math={String.raw`\text{Every nonempty subset } S \subseteq \mathbb{R} \text{ that is bounded above has a least upper bound } \sup S \in \mathbb{R}.`} />
           <p className="mt-4 text-sm text-neutral-400">
             Equivalent formulations you'll see in the course: every Cauchy
             sequence converges; every bounded monotone sequence converges;
             nested closed intervals have nonempty intersection; every bounded
             sequence has a convergent subsequence (Bolzano–Weierstrass). The
-            demo above shows why this property fails in <InlineMath math="\\mathbb{Q}" /> —
-            the iterates are Cauchy, but their "limit" <InlineMath math="\\sqrt{2}" />{" "}
+            demo above shows why this property fails in <InlineMath math="\mathbb{Q}" /> —
+            the iterates are Cauchy, but their "limit" <InlineMath math="\sqrt{2}" />{" "}
             is irrational.
           </p>
         </Card>
