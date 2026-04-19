@@ -53,7 +53,7 @@ export const TOPICS: Topic[] = [
   { slug: "as/quotient", subject: "AS", number: 4, title: "Quotient Groups",
     blurb: "Collapse cosets into a new group.", status: "live" },
   { slug: "as/homomorphisms", subject: "AS", number: 5, title: "Homomorphisms & Kernels",
-    blurb: "Drag an arrow between groups, see what's preserved.", status: "soon" },
+    blurb: "Drag an arrow between groups, see what's preserved.", status: "live" },
   { slug: "as/group-actions", subject: "AS", number: 6, title: "Group Actions",
     blurb: "Orbits, stabilizers, Burnside's theorem.", status: "soon" },
   { slug: "as/rings", subject: "AS", number: 7, title: "Rings & Ideals",
