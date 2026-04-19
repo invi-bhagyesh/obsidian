@@ -18,6 +18,7 @@ import SubgroupLattice from "./pages/as/SubgroupLattice"
 import Cosets from "./pages/as/Cosets"
 import Quotient from "./pages/as/Quotient"
 import Homomorphisms from "./pages/as/Homomorphisms"
+import GroupActions from "./pages/as/GroupActions"
 import { TOPICS } from "./topics"
 
 export default function App() {
@@ -57,6 +58,7 @@ export default function App() {
           <Route path="/as/cosets" element={<Cosets />} />
           <Route path="/as/quotient" element={<Quotient />} />
           <Route path="/as/homomorphisms" element={<Homomorphisms />} />
+          <Route path="/as/group-actions" element={<GroupActions />} />
           {TOPICS.filter((t) => t.status === "soon").map((t) => (
             <Route key={t.slug} path={`/${t.slug}`} element={<Soon topic={t} />} />
           ))}

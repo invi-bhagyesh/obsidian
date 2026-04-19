@@ -55,7 +55,7 @@ export const TOPICS: Topic[] = [
   { slug: "as/homomorphisms", subject: "AS", number: 5, title: "Homomorphisms & Kernels",
     blurb: "Drag an arrow between groups, see what's preserved.", status: "live" },
   { slug: "as/group-actions", subject: "AS", number: 6, title: "Group Actions",
-    blurb: "Orbits, stabilizers, Burnside's theorem.", status: "soon" },
+    blurb: "Orbits, stabilizers, Burnside's theorem.", status: "live" },
   { slug: "as/rings", subject: "AS", number: 7, title: "Rings & Ideals",
     blurb: "Two operation tables. Watch ideals absorb products.", status: "soon" },
   { slug: "as/polynomial-rings", subject: "AS", number: 8, title: "Polynomial Rings",
