@@ -1,8 +1,6 @@
 # 1. Operations on a Set & Algebraic Structures
 
 > **Context.** Abstract algebra studies *sets equipped with operations* and the rules those operations obey. Before groups, rings, or fields, we need the language of **binary operations**: what it means to "combine" two elements, what properties those combinations can have, and how to check those properties on concrete examples.
->
-> This opening chapter is a warm-up. Master it: every subsequent definition (group, subgroup, ring, ideal, field) reuses the same vocabulary — *closed*, *associative*, *identity*, *inverse*.
 
 ---
 

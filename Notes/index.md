@@ -10,3 +10,7 @@ Notes from my maths courses.
 - [[OS/|Operating Systems]]
 - [[RA/|Real Analysis]]
 - [[VACV/|Vector Analysis & Complex Variables]]
+
+---
+
+👉 **[Interactive visualisations →](./interactive/)** — sliders, animations and simulations for the abstract concepts.

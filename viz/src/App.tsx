@@ -1,0 +1,35 @@
+import { Routes, Route, Link } from "react-router-dom"
+import Home from "./pages/Home"
+import Soon from "./pages/Soon"
+import RealNumbers from "./pages/ra/RealNumbers"
+import { TOPICS } from "./topics"
+
+export default function App() {
+  return (
+    <div className="min-h-screen">
+      <nav className="sticky top-0 z-50 backdrop-blur-md bg-neutral-950/70 border-b border-neutral-800">
+        <div className="max-w-6xl mx-auto px-6 py-3 flex items-center gap-4">
+          <Link to="/" className="font-semibold tracking-tight">
+            <span className="text-neutral-400">maths</span>
+            <span className="mx-1 text-neutral-600">/</span>
+            <span>interactive</span>
+          </Link>
+          <div className="ml-auto text-sm text-neutral-400">
+            <a href="../" className="hover:text-neutral-100 transition">
+              ← back to notes
+            </a>
+          </div>
+        </div>
+      </nav>
+      <main>
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/ra/real-numbers" element={<RealNumbers />} />
+          {TOPICS.filter((t) => t.status === "soon").map((t) => (
+            <Route key={t.slug} path={`/${t.slug}`} element={<Soon topic={t} />} />
+          ))}
+        </Routes>
+      </main>
+    </div>
+  )
+}

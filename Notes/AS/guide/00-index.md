@@ -39,36 +39,36 @@ Each CO practice chapter compiles 25+ problems with full solutions covering the 
 
 ## Chapter Table
 
-| # | Title | Key ideas |
-|---|---|---|
-| 01 | [[01-operations-and-algebraic-structures]] | Binary operations, closure, magmas, semigroups, monoids; associativity/commutativity; identity and inverse |
-| 02 | [[02-symmetries-of-the-plane]] | Rigid motions, symmetry groups of geometric figures, dihedral groups as motivation |
-| 03 | [[03-groups-definition-and-examples]] | Group axioms, $|G|$, examples ($\mathbb Z_n$, $S_n$, $D_n$, $U(n)$, $GL_n$), basic properties |
-| 04 | [[04-subgroups-generators-cayley]] | Subgroup test, $\langle S\rangle$, Cayley diagrams, finitely generated groups |
-| 05 | [[05-permutation-groups-and-dihedral]] | $S_n$, cycle decomposition, cycle type, sign, $A_n$, dihedral structure |
-| 06 | [[06-cyclic-groups-and-order]] | $|a|$, cyclic groups, subgroup structure of $\mathbb Z_n$, $\langle a^k\rangle = \langle a^{\gcd(n,k)}\rangle$ |
-| 07 | [[07-co1-practice-problems]] | **CO1 problem set** (25+ problems across chapters 01–06) |
-| 08 | [[08-equivalence-relations-and-partitions]] | Equivalence relations, equivalence classes, canonical partition ↔ relation bijection |
-| 09 | [[09-cosets-and-lagranges-theorem]] | Left/right cosets, $[G:H]$, Lagrange's theorem, Fermat's little theorem, Euler's theorem |
-| 10 | [[10-normal-subgroups-and-quotient-groups]] | Normal subgroups, quotient $G/N$, normality characterizations, first examples of $G/N$ |
-| 11 | [[11-direct-products]] | External/internal direct product, $\|(a,b)\| = \operatorname{lcm}(\|a\|,\|b\|)$, CRT for groups, FTFAG preview |
-| 12 | [[12-subgroup-lattice-and-dihedral-groups]] | Subgroup lattice, full classification of subgroups of $D_n$, center, conjugacy, $D_n^{\mathrm{ab}}$ |
-| 13 | [[13-burnsides-theorem]] | Group action basics, orbit-stabilizer, Burnside/Cauchy-Frobenius, necklaces, cube colorings |
-| 14 | [[14-co2-practice-problems]] | **CO2 problem set** (25+ problems across chapters 08–13) |
-| 15 | [[15-group-actions]] | Action = homomorphism $G \to \mathrm{Sym}(X)$, faithful/transitive/regular, Cayley's theorem, class equation preview |
-| 16 | [[16-centralizer-normalizer-stabilizer]] | $C_G(a)$, $N_G(S)$, class equation, $p$-groups have nontrivial center, Cauchy's theorem |
-| 17 | [[17-homomorphisms-and-isomorphisms]] | Group homomorphisms, kernel/image, isomorphism invariants, $\mathrm{Aut}(G)$, $\mathrm{Inn}(G)$ |
-| 18 | [[18-isomorphism-theorems]] | First/Second/Third isomorphism theorems, correspondence theorem, universal property factorization |
-| 19 | [[19-rings-definition-and-examples]] | Ring axioms, subrings, units, zero divisors, $R^\times$, $\mathbb Z_n$ is a field iff $n$ prime |
-| 20 | [[20-co3-practice-problems]] | **CO3 problem set** (25+ problems across chapters 15–19) |
-| 21 | [[21-integral-domains]] | Integral domain, cancellation, characteristic, Frobenius, irreducible vs prime, field of fractions |
-| 22 | [[22-ideals-and-quotient-rings]] | Ideals, PIDs, quotient rings, prime/maximal ideals, $R/I$ field iff $I$ maximal |
-| 23 | [[23-ring-homomorphisms]] | Ring homomorphisms, First/Second/Third iso for rings, evaluation $\operatorname{ev}_a$, CRT for rings |
-| 24 | [[24-polynomial-rings]] | $D[x]$, degree, $D$ integral domain $\Rightarrow$ $D[x]$ integral domain, $F[x]$ is a PID, factor theorem |
-| 25 | [[25-co4-practice-problems]] | **CO4 problem set** (25+ problems across chapters 21–24) |
-| 26 | [[26-fields-and-irreducibility]] | Irreducibility: rational root, Gauss's lemma, Eisenstein, reduction mod $p$; $F[x]/\langle p\rangle$ is a field iff $p$ irreducible |
-| 27 | [[27-finite-fields-and-extensions]] | Field extensions, minimal polynomial, tower law, classification of $\mathbb F_{p^n}$, Frobenius, constructibility impossibilities |
-| 28 | [[28-co5-practice-problems]] | **CO5 problem set** (25+ problems across chapters 26–27) |
+| #   | Title                                       | Key ideas                                                                                                                           |     |                                                                                                            |
+| --- | ------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------- | --- | ---------------------------------------------------------------------------------------------------------- |
+| 01  | [[01-operations-and-algebraic-structures]]  | Binary operations, closure, magmas, semigroups, monoids; associativity/commutativity; identity and inverse                          |     |                                                                                                            |
+| 02  | [[02-symmetries-of-the-plane]]              | Rigid motions, symmetry groups of geometric figures, dihedral groups as motivation                                                  |     |                                                                                                            |
+| 03  | [[03-groups-definition-and-examples]]       | Group axioms, $                                                                                                                     | G   | $, examples ($\mathbb Z_n$, $S_n$, $D_n$, $U(n)$, $GL_n$), basic properties                                |
+| 04  | [[04-subgroups-generators-cayley]]          | Subgroup test, $\langle S\rangle$, Cayley diagrams, finitely generated groups                                                       |     |                                                                                                            |
+| 05  | [[05-permutation-groups-and-dihedral]]      | $S_n$, cycle decomposition, cycle type, sign, $A_n$, dihedral structure                                                             |     |                                                                                                            |
+| 06  | [[06-cyclic-groups-and-order]]              | $                                                                                                                                   | a   | $, cyclic groups, subgroup structure of $\mathbb Z_n$, $\langle a^k\rangle = \langle a^{\gcd(n,k)}\rangle$ |
+| 07  | [[07-co1-practice-problems]]                | **CO1 problem set** (25+ problems across chapters 01–06)                                                                            |     |                                                                                                            |
+| 08  | [[08-equivalence-relations-and-partitions]] | Equivalence relations, equivalence classes, canonical partition ↔ relation bijection                                                |     |                                                                                                            |
+| 09  | [[09-cosets-and-lagranges-theorem]]         | Left/right cosets, $[G:H]$, Lagrange's theorem, Fermat's little theorem, Euler's theorem                                            |     |                                                                                                            |
+| 10  | [[10-normal-subgroups-and-quotient-groups]] | Normal subgroups, quotient $G/N$, normality characterizations, first examples of $G/N$                                              |     |                                                                                                            |
+| 11  | [[11-direct-products]]                      | External/internal direct product, $\|(a,b)\| = \operatorname{lcm}(\|a\|,\|b\|)$, CRT for groups, FTFAG preview                      |     |                                                                                                            |
+| 12  | [[12-subgroup-lattice-and-dihedral-groups]] | Subgroup lattice, full classification of subgroups of $D_n$, center, conjugacy, $D_n^{\mathrm{ab}}$                                 |     |                                                                                                            |
+| 13  | [[13-burnsides-theorem]]                    | Group action basics, orbit-stabilizer, Burnside/Cauchy-Frobenius, necklaces, cube colorings                                         |     |                                                                                                            |
+| 14  | [[14-co2-practice-problems]]                | **CO2 problem set** (25+ problems across chapters 08–13)                                                                            |     |                                                                                                            |
+| 15  | [[15-group-actions]]                        | Action = homomorphism $G \to \mathrm{Sym}(X)$, faithful/transitive/regular, Cayley's theorem, class equation preview                |     |                                                                                                            |
+| 16  | [[16-centralizer-normalizer-stabilizer]]    | $C_G(a)$, $N_G(S)$, class equation, $p$-groups have nontrivial center, Cauchy's theorem                                             |     |                                                                                                            |
+| 17  | [[17-homomorphisms-and-isomorphisms]]       | Group homomorphisms, kernel/image, isomorphism invariants, $\mathrm{Aut}(G)$, $\mathrm{Inn}(G)$                                     |     |                                                                                                            |
+| 18  | [[18-isomorphism-theorems]]                 | First/Second/Third isomorphism theorems, correspondence theorem, universal property factorization                                   |     |                                                                                                            |
+| 19  | [[19-rings-definition-and-examples]]        | Ring axioms, subrings, units, zero divisors, $R^\times$, $\mathbb Z_n$ is a field iff $n$ prime                                     |     |                                                                                                            |
+| 20  | [[20-co3-practice-problems]]                | **CO3 problem set** (25+ problems across chapters 15–19)                                                                            |     |                                                                                                            |
+| 21  | [[21-integral-domains]]                     | Integral domain, cancellation, characteristic, Frobenius, irreducible vs prime, field of fractions                                  |     |                                                                                                            |
+| 22  | [[22-ideals-and-quotient-rings]]            | Ideals, PIDs, quotient rings, prime/maximal ideals, $R/I$ field iff $I$ maximal                                                     |     |                                                                                                            |
+| 23  | [[23-ring-homomorphisms]]                   | Ring homomorphisms, First/Second/Third iso for rings, evaluation $\operatorname{ev}_a$, CRT for rings                               |     |                                                                                                            |
+| 24  | [[24-polynomial-rings]]                     | $D[x]$, degree, $D$ integral domain $\Rightarrow$ $D[x]$ integral domain, $F[x]$ is a PID, factor theorem                           |     |                                                                                                            |
+| 25  | [[25-co4-practice-problems]]                | **CO4 problem set** (25+ problems across chapters 21–24)                                                                            |     |                                                                                                            |
+| 26  | [[26-fields-and-irreducibility]]            | Irreducibility: rational root, Gauss's lemma, Eisenstein, reduction mod $p$; $F[x]/\langle p\rangle$ is a field iff $p$ irreducible |     |                                                                                                            |
+| 27  | [[27-finite-fields-and-extensions]]         | Field extensions, minimal polynomial, tower law, classification of $\mathbb F_{p^n}$, Frobenius, constructibility impossibilities   |     |                                                                                                            |
+| 28  | [[28-co5-practice-problems]]                | **CO5 problem set** (25+ problems across chapters 26–27)                                                                            |     |                                                                                                            |
 
 ---
 

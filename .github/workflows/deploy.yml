@@ -1,4 +1,4 @@
-name: Deploy Quartz site to GitHub Pages
+name: Deploy Quartz + viz to GitHub Pages
 
 on:
   push:
@@ -22,13 +22,29 @@ jobs:
         with:
           fetch-depth: 0
           lfs: true
+
       - uses: actions/setup-node@v4
         with:
           node-version: 22
-      - name: Install dependencies
+
+      # ----- Quartz (root package) -----
+      - name: Install Quartz deps
         run: npm ci
       - name: Build Quartz
         run: npx quartz build -d Notes
+
+      # ----- Interactive viz (viz/ subpackage) -----
+      - name: Install viz deps
+        working-directory: viz
+        run: npm ci
+      - name: Build viz
+        working-directory: viz
+        run: npm run build
+      - name: Merge viz build into public/
+        run: |
+          mkdir -p public/interactive
+          cp -R viz/dist/. public/interactive/
+
       - uses: actions/upload-pages-artifact@v3
         with:
           path: public
