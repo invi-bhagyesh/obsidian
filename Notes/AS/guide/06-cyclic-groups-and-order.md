@@ -6,35 +6,103 @@
 > - Every subgroup of a cyclic group is cyclic.
 > - Every finite abelian group is a direct product of cyclic groups (a structure theorem we preview but don't fully prove).
 >
-> This chapter gives a complete theory of cyclic groups: orders, generators, subgroups, and the fundamental theorem.
+> This chapter gives a complete theory of cyclic groups: orders, generators, subgroups, and the fundamental theorem. The single most important computational tool is the **order formula** $|a^k| = n/\gcd(n, k)$, which governs generators, subgroup lattices, and counting formulas all at once.
 
 ---
 
 ## 6.1 Order of an Element
 
-> **Definition (Order of an element).** Let $G$ be a group and $a \in G$. The **order** of $a$, written $|a|$, is the smallest positive integer $n$ with $a^n = e$. If no such $n$ exists, $|a| = \infty$.
+> **Definition (Order of an element).** Let $G$ be a group and $a \in G$. The **order** of $a$, written $|a|$, is the smallest positive integer $n$ with $a^n = e$. If no such $n$ exists, we write $|a| = \infty$ and say $a$ has **infinite order**.
 
-**Example 1.** In $\mathbb{Z}_6$, $|2| = 3$ (since $2 + 2 + 2 = 6 \equiv 0$, and $2, 4 \neq 0$).
+**Well-definedness.** The set $S = \{n \in \mathbb{Z}_{>0} : a^n = e\}$ is either empty (in which case $|a| = \infty$ by convention) or a non-empty subset of $\mathbb{Z}_{>0}$, so by the well-ordering principle it has a least element. Hence the order is unambiguously defined.
 
-**Example 2.** In $(\mathbb{Z}, +)$, $|1| = \infty$ (no positive multiple of 1 is zero).
+**Example 1 (Order in $\mathbb{Z}_6$).** Compute $|2|$ in $(\mathbb{Z}_6, +)$.
 
-**Example 3.** In $D_n$, $|r| = n$ (rotation), $|s| = 2$ (reflection).
+*Solution.* We compute the multiples of $2$ in $\mathbb{Z}_6$ (note: powers are additive multiples here since the operation is $+$):
+$$1 \cdot 2 = 2, \quad 2 \cdot 2 = 4, \quad 3 \cdot 2 = 6 \equiv 0 \pmod 6.$$
+The first positive integer $n$ with $n \cdot 2 \equiv 0 \pmod 6$ is $n = 3$. Hence $|2| = 3$. $\blacksquare$
 
-**Example 4.** In $GL_2(\mathbb{R})$, $\begin{pmatrix} 0 & -1 \\ 1 & 0 \end{pmatrix}$ has order 4 (it's $R_{90°}$).
+**Example 2 (Infinite order).** In $(\mathbb{Z}, +)$, $|1| = \infty$.
 
-### Properties
+*Solution.* We must show no positive integer $n$ satisfies $n \cdot 1 = 0$. But $n \cdot 1 = n > 0$ for all $n > 0$, so $n \cdot 1 \neq 0$. Hence no such $n$ exists and $|1| = \infty$. $\blacksquare$
 
-> **Theorem 6.1.** Let $|a| = n < \infty$. Then:
-> 1. $a^k = e \iff n \mid k$.
-> 2. $|a^k| = n/\gcd(n, k)$.
+**Example 3 (Orders in the dihedral group).** In $D_n$, $|r| = n$ (rotation by $2\pi/n$) and $|s| = 2$ (reflection).
+
+*Brief verification.* The rotation $r$ acts as rotation by $2\pi/n$; the smallest $k$ with $r^k = e$ is $k = n$ (we need a full turn). A reflection $s$ satisfies $s^2 = e$ geometrically (reflecting twice returns to start), and $s \neq e$, so $|s| = 2$.
+
+**Example 4 (Order of a rotation matrix).** In $GL_2(\mathbb{R})$, the matrix $A = \begin{pmatrix} 0 & -1 \\ 1 & 0 \end{pmatrix}$ has order $4$.
+
+*Solution.* Note that $A$ is the standard $90^\circ$ rotation matrix $R_{90^\circ}$. We compute:
+$$A^2 = \begin{pmatrix} 0 & -1 \\ 1 & 0 \end{pmatrix}\begin{pmatrix} 0 & -1 \\ 1 & 0 \end{pmatrix} = \begin{pmatrix} -1 & 0 \\ 0 & -1 \end{pmatrix} = -I.$$
+$$A^3 = A \cdot A^2 = A \cdot (-I) = -A = \begin{pmatrix} 0 & 1 \\ -1 & 0 \end{pmatrix}.$$
+$$A^4 = A^2 \cdot A^2 = (-I)^2 = I.$$
+So $A^4 = I$ and $A^1, A^2, A^3 \neq I$. Hence $|A| = 4$. $\blacksquare$
+
+*Sanity check.* Geometrically, rotating by $90^\circ$ four times gives the identity, and no fewer rotations do (a single, double, or triple $90^\circ$ rotation is not the identity).
+
+### Properties of order
+
+> **Theorem 6.1 (Order properties).** Let $G$ be a group and $a \in G$ with $|a| = n < \infty$. Then:
+> 1. $a^k = e \iff n \mid k$ (for any $k \in \mathbb{Z}$).
+> 2. $|a^k| = \dfrac{n}{\gcd(n, k)}$ for any $k \in \mathbb{Z}$, $k \neq 0$.
 > 3. $|a^{-1}| = |a|$.
->
-> *Proof.*
-> 1. ($\Leftarrow$) If $n \mid k$, $k = qn$, then $a^k = (a^n)^q = e$. ($\Rightarrow$) Division: $k = qn + r$ with $0 \leq r < n$. Then $e = a^k = a^{qn} a^r = a^r$. By minimality of $n$, $r = 0$.
-> 2. Let $d = \gcd(n, k)$. Then $(a^k)^{n/d} = a^{kn/d} = (a^n)^{k/d} = e$, so $|a^k| \leq n/d$. Conversely, if $(a^k)^m = e$, then $n \mid km$ (by part 1), so $n/d \mid (k/d) m$. Since $\gcd(n/d, k/d) = 1$, $n/d \mid m$. Hence $|a^k| \geq n/d$.
-> 3. Done as Problem 7 in [[03-groups-definition-and-examples]]. $\blacksquare$
 
-**Example 5.** In $\mathbb{Z}_{12}$, $|3| = 12/\gcd(12, 3) = 12/3 = 4$. Check: $3, 6, 9, 0$ — indeed 4 elements before hitting 0.
+**Proof.** We handle each part in turn.
+
+**(1) $a^k = e \iff n \mid k$.**
+
+*($\Leftarrow$) $n \mid k \implies a^k = e$.* Write $k = qn$ for some integer $q$. Then
+$$a^k = a^{qn} = (a^n)^q = e^q = e. \checkmark$$
+
+*($\Rightarrow$) $a^k = e \implies n \mid k$.* Suppose $a^k = e$. Use the division algorithm on $k$ by $n$: there exist unique integers $q, r$ with
+$$k = qn + r, \quad 0 \leq r < n.$$
+
+Then
+$$e = a^k = a^{qn + r} = (a^n)^q \cdot a^r = e^q \cdot a^r = a^r.$$
+
+So $a^r = e$ with $0 \leq r < n$. If $r > 0$, this contradicts the minimality of $n$ (recall $n = |a|$ is the *smallest* positive integer with $a^n = e$). Hence $r = 0$, meaning $k = qn$ and $n \mid k$. $\checkmark$
+
+**(2) $|a^k| = n/\gcd(n, k)$.**
+
+Let $d = \gcd(n, k)$ and write $n = d n'$, $k = d k'$ with $\gcd(n', k') = 1$.
+
+*Goal.* Show $|a^k| = n' = n/d$.
+
+*Step 1: $(a^k)^{n'} = e$, so $|a^k| \leq n'$.* Compute:
+$$(a^k)^{n'} = a^{k n'} = a^{d k' \cdot n'} = a^{k' \cdot d n'} = a^{k' n} = (a^n)^{k'} = e^{k'} = e.$$
+So $|a^k|$ is a positive integer $m$ such that $(a^k)^m = e$, and we've exhibited $m = n'$ working. By definition of order, $|a^k| \leq n'$.
+
+*Step 2: If $(a^k)^m = e$ then $n' \mid m$, so $|a^k| \geq n'$.* Suppose $(a^k)^m = e$, i.e., $a^{km} = e$. By part (1), $n \mid km$. Substitute $n = d n', k = d k'$:
+$$d n' \mid d k' m \implies n' \mid k' m.$$
+
+Since $\gcd(n', k') = 1$, Euclid's lemma gives $n' \mid m$.
+
+Applying this to $m = |a^k|$: $n' \mid |a^k|$, hence $|a^k| \geq n'$.
+
+*Conclusion.* Combining Steps 1 and 2, $|a^k| = n' = n/\gcd(n, k)$. $\checkmark$
+
+**(3) $|a^{-1}| = |a|$.**
+
+This was proven as Problem 7 in [[03-groups-definition-and-examples]]. We reproduce the argument for completeness.
+
+Since $|a| = n$, we have $a^n = e$. Taking inverses:
+$$(a^{-1})^n = (a^n)^{-1} = e^{-1} = e.$$
+So $|a^{-1}|$ divides $n$ (by part (1) applied to $a^{-1}$). Let $|a^{-1}| = m$, so $m \mid n$.
+
+Symmetrically, $(a^{-1})^m = e$ implies $a^m = ((a^{-1})^m)^{-1} = e$, so $|a| \mid m$, i.e., $n \mid m$.
+
+From $m \mid n$ and $n \mid m$, both positive, we conclude $m = n$. Hence $|a^{-1}| = |a|$. $\blacksquare$
+
+*Remark (why the formula is so useful).* Part (2) is the workhorse of cyclic-group computations. It tells you the order of *any* power $a^k$ knowing only $n = |a|$ and the arithmetic $\gcd(n, k)$ — no need to compute $a^k, a^{2k}, a^{3k}, \ldots$ by brute force.
+
+*Remark (what could go wrong without minimality).* Part (1)'s forward direction depends crucially on $n$ being the *minimum*. Without this, we could only conclude $a^r = e$ without deriving $r = 0$. This is why "order" is defined as the smallest positive exponent yielding $e$, not merely *any* such exponent.
+
+**Example 5 (Applying the order formula).** In $\mathbb{Z}_{12}$, compute $|3|$.
+
+*Solution.* The generator $1 \in \mathbb{Z}_{12}$ has order $12$ (since $1$ generates $\mathbb{Z}_{12}$). The element $3 = 3 \cdot 1$, so by Theorem 6.1(2):
+$$|3| = \frac{12}{\gcd(12, 3)} = \frac{12}{3} = 4.$$
+
+*Verification by direct computation.* Multiples of $3$ in $\mathbb{Z}_{12}$: $3, 6, 9, 12 \equiv 0$. So $4 \cdot 3 \equiv 0 \pmod{12}$ and $1 \cdot 3, 2 \cdot 3, 3 \cdot 3 \not\equiv 0 \pmod{12}$. Hence $|3| = 4$. $\checkmark$ $\blacksquare$
 
 ---
 
@@ -42,129 +110,375 @@
 
 > **Definition (Cyclic group).** A group $G$ is **cyclic** if there exists $a \in G$ with $G = \langle a \rangle = \{a^k : k \in \mathbb{Z}\}$. Any such $a$ is called a **generator** of $G$.
 
+**Remark.** The set $\langle a \rangle = \{a^k : k \in \mathbb{Z}\}$ is indeed a subgroup of $G$ (see [[04-subgroups-generators-cayley-diagrams]]): it's closed under products ($a^i a^j = a^{i+j}$), closed under inverses ($(a^k)^{-1} = a^{-k}$), and contains the identity ($e = a^0$). So "$\langle a \rangle$ equals $G$" is a meaningful condition.
+
 ### Classification
 
-> **Theorem 6.2 (Classification of cyclic groups).** Let $G = \langle a \rangle$ be cyclic.
-> 1. If $|a| = \infty$, then $G$ is isomorphic to $(\mathbb{Z}, +)$ via $k \mapsto a^k$.
-> 2. If $|a| = n < \infty$, then $|G| = n$ and $G \cong \mathbb{Z}_n$ via $k \mapsto a^k \pmod n$.
+> **Theorem 6.2 (Classification of cyclic groups).** Let $G = \langle a \rangle$ be cyclic. Then:
+> 1. If $|a| = \infty$, then $G \cong (\mathbb{Z}, +)$ via the map $k \mapsto a^k$.
+> 2. If $|a| = n < \infty$, then $|G| = n$ and $G \cong (\mathbb{Z}_n, +)$ via the map $k \pmod n \mapsto a^k$.
 
-*Proof of 2.* $G = \{e, a, a^2, \ldots, a^{n-1}\}$ — distinct (if $a^i = a^j$ with $0 \leq i < j < n$, then $a^{j-i} = e$ with $0 < j - i < n$, contradicting $|a| = n$). So $|G| = n$. The bijection $k \pmod n \mapsto a^k$ is clearly a homomorphism. $\blacksquare$
+**Proof.**
 
-**Upshot:** for each $n$, there is **exactly one** cyclic group of order $n$ up to isomorphism — namely $\mathbb{Z}_n$. And one infinite cyclic group — namely $\mathbb{Z}$.
+**(1) Infinite order case.** Assume $|a| = \infty$. Define $\varphi: \mathbb{Z} \to G$ by $\varphi(k) = a^k$.
+
+*Homomorphism.* $\varphi(j + k) = a^{j + k} = a^j a^k = \varphi(j) \varphi(k)$. $\checkmark$
+
+*Surjective.* By definition $G = \{a^k : k \in \mathbb{Z}\}$, so $\varphi$ hits every element of $G$. $\checkmark$
+
+*Injective.* Suppose $\varphi(j) = \varphi(k)$, i.e., $a^j = a^k$. Then $a^{j-k} = e$. If $j \neq k$, set $m = |j - k| > 0$; then $a^m = e$ (or $a^{-m} = e$, which gives $a^m = e$ by taking inverses). This contradicts $|a| = \infty$. Hence $j = k$. $\checkmark$
+
+So $\varphi$ is a bijective homomorphism, i.e., an isomorphism. Hence $G \cong \mathbb{Z}$.
+
+**(2) Finite order case.** Assume $|a| = n < \infty$.
+
+*Step 1: $G = \{e, a, a^2, \ldots, a^{n-1}\}$ and these elements are distinct.*
+
+(a) **Inclusion $\{e, a, \ldots, a^{n-1}\} \subseteq G$.** Each $a^k$ is in $G$ by definition of $\langle a \rangle$.
+
+(b) **Inclusion $G \subseteq \{e, a, \ldots, a^{n-1}\}$.** Take any $a^k \in G$ with $k \in \mathbb{Z}$. By the division algorithm, $k = qn + r$ with $0 \leq r < n$. Then
+$$a^k = a^{qn + r} = (a^n)^q a^r = e^q a^r = a^r \in \{a^0, a^1, \ldots, a^{n-1}\}.$$
+
+(c) **Distinctness.** Suppose $a^i = a^j$ with $0 \leq i \leq j \leq n - 1$. Then $a^{j - i} = e$ with $0 \leq j - i \leq n - 1 < n$. If $j - i > 0$, this contradicts the minimality of $n$. So $j = i$.
+
+Hence $|G| = n$.
+
+*Step 2: Define the isomorphism $\varphi: \mathbb{Z}_n \to G$ by $\varphi(k) = a^k$.*
+
+(a) **Well-defined.** Must show that if $k \equiv k' \pmod n$, then $a^k = a^{k'}$. If $k - k' = qn$, then $a^{k - k'} = (a^n)^q = e$, so $a^k = a^{k'}$. $\checkmark$
+
+(b) **Homomorphism.** $\varphi([j] + [k]) = \varphi([j + k]) = a^{j + k} = a^j a^k = \varphi([j]) \varphi([k])$. $\checkmark$
+
+(c) **Bijection.** Both sides have $n$ elements, and $\varphi$ is surjective (by Step 1, every element of $G$ is $a^r$ for some $0 \leq r < n$). A surjection between finite sets of equal size is a bijection. $\checkmark$
+
+Hence $\varphi$ is an isomorphism and $G \cong \mathbb{Z}_n$. $\blacksquare$
+
+**Upshot.** For each positive integer $n$, there is **exactly one** cyclic group of order $n$ up to isomorphism — namely $\mathbb{Z}_n$. And one infinite cyclic group — namely $\mathbb{Z}$. So "the cyclic group of order $n$" is a well-defined object.
+
+*Remark (why this matters).* This is our first structure theorem: a classification by a single invariant (the order). For general groups, classification is much harder; for cyclic groups, the order tells us everything.
 
 ### Every cyclic group is abelian
 
-> **Theorem 6.3.** Cyclic groups are abelian.
+> **Theorem 6.3.** Every cyclic group is abelian.
 >
-> *Proof.* $a^i \cdot a^j = a^{i+j} = a^{j+i} = a^j \cdot a^i$. $\blacksquare$
+> **Proof.** Let $G = \langle a \rangle$ and take $x, y \in G$. Then $x = a^i$ and $y = a^j$ for some integers $i, j$. Compute:
+> $$xy = a^i a^j = a^{i + j} = a^{j + i} = a^j a^i = yx.$$
+> Hence $G$ is abelian. $\blacksquare$
 
-**But:** not every abelian group is cyclic. Counter-example: $V_4 = \mathbb{Z}_2 \times \mathbb{Z}_2$ is abelian, order 4, not cyclic (every non-identity element has order 2, not 4).
+**Converse fails.** Not every abelian group is cyclic. The Klein four-group $V_4 \cong \mathbb{Z}_2 \times \mathbb{Z}_2$ is abelian and has order $4$, but is not cyclic.
+
+*Proof that $V_4$ is not cyclic.* Every element of $V_4$ other than the identity has order $2$. If $V_4$ were cyclic with generator $g$, then $|g| = |V_4| = 4$. But no element has order $4$ — contradiction. Hence $V_4$ is not cyclic. $\blacksquare$
 
 ---
 
 ## 6.3 Generators of $\mathbb{Z}_n$
 
-> **Theorem 6.4.** The generators of $\mathbb{Z}_n$ are exactly the integers $k$ with $0 < k < n$ and $\gcd(k, n) = 1$. There are $\varphi(n)$ generators.
+> **Theorem 6.4 (Generators of $\mathbb{Z}_n$).** The generators of $\mathbb{Z}_n$ are exactly the integers $k$ with $0 < k < n$ and $\gcd(k, n) = 1$. Consequently, $\mathbb{Z}_n$ has $\varphi(n)$ generators, where $\varphi$ is Euler's totient function.
 
-*Proof.* $k$ generates $\mathbb{Z}_n$ iff $\langle k \rangle = \mathbb{Z}_n$ iff $|k| = n$ iff $n/\gcd(n, k) = n$ iff $\gcd(n, k) = 1$. $\blacksquare$
+**Proof.** We chain equivalences:
+$$k \text{ generates } \mathbb{Z}_n \iff \langle k \rangle = \mathbb{Z}_n \iff |\langle k\rangle| = n \iff |k| = n.$$
 
-**Example 6.** Generators of $\mathbb{Z}_{12}$: $k \in \{1, 5, 7, 11\}$ — the integers coprime to 12. $\varphi(12) = 4$.
+Now apply the order formula (Theorem 6.1(2)) to the element $k \in \mathbb{Z}_n = \langle 1 \rangle$, where $|1| = n$. Writing $k = k \cdot 1$ (the $k$-th additive power of the generator $1$):
+$$|k| = \frac{n}{\gcd(n, k)}.$$
 
-**Example 7.** Generators of $\mathbb{Z}_{10}$: $\{1, 3, 7, 9\}$. $\varphi(10) = 4$.
+So
+$$|k| = n \iff \frac{n}{\gcd(n, k)} = n \iff \gcd(n, k) = 1.$$
+
+Counting such $k$ in $\{1, 2, \ldots, n - 1\}$ gives $\varphi(n)$ by definition of the Euler totient function. $\blacksquare$
+
+*Remark.* The proof reduces generation to the order formula — a theme we'll repeat. Whenever you see "which elements generate this subgroup of a cyclic group," think $\gcd$.
+
+**Example 6 (Generators of $\mathbb{Z}_{12}$).** List them.
+
+*Solution.* We seek $k \in \{1, 2, \ldots, 11\}$ with $\gcd(k, 12) = 1$. Check each:
+- $\gcd(1, 12) = 1$. $\checkmark$
+- $\gcd(2, 12) = 2$. $\times$
+- $\gcd(3, 12) = 3$. $\times$
+- $\gcd(4, 12) = 4$. $\times$
+- $\gcd(5, 12) = 1$. $\checkmark$
+- $\gcd(6, 12) = 6$. $\times$
+- $\gcd(7, 12) = 1$. $\checkmark$
+- $\gcd(8, 12) = 4$. $\times$
+- $\gcd(9, 12) = 3$. $\times$
+- $\gcd(10, 12) = 2$. $\times$
+- $\gcd(11, 12) = 1$. $\checkmark$
+
+Generators: $\{1, 5, 7, 11\}$. Count: $\varphi(12) = 12 \cdot (1 - 1/2)(1 - 1/3) = 12 \cdot 1/2 \cdot 2/3 = 4$. $\checkmark$ $\blacksquare$
+
+**Example 7 (Generators of $\mathbb{Z}_{10}$).** List them.
+
+*Solution.* $\varphi(10) = 10 \cdot (1 - 1/2)(1 - 1/5) = 10 \cdot 1/2 \cdot 4/5 = 4$. The four integers coprime to $10$ in $\{1, \ldots, 9\}$ are $\{1, 3, 7, 9\}$.
+
+Check: $\gcd(1,10) = \gcd(3,10) = \gcd(7,10) = \gcd(9,10) = 1$. $\checkmark$ $\blacksquare$
 
 ---
 
 ## 6.4 Subgroups of Cyclic Groups
 
 > **Theorem 6.5.** Every subgroup of a cyclic group is cyclic.
->
-> *Proof.* Let $G = \langle a \rangle$, $H \leq G$. If $H = \{e\}$, trivially $H = \langle e \rangle$. Else let $m$ be the smallest positive integer with $a^m \in H$. Claim $H = \langle a^m \rangle$:
-> ($\supseteq$): $a^m \in H$, so $\langle a^m \rangle \subseteq H$.
-> ($\subseteq$): Take $a^k \in H$. Divide $k = qm + r$, $0 \leq r < m$. Then $a^r = a^k (a^m)^{-q} \in H$. By minimality of $m$, $r = 0$, so $a^k = (a^m)^q \in \langle a^m \rangle$. $\blacksquare$
 
-> **Theorem 6.6 (Fundamental Theorem of Cyclic Groups).** Let $G = \langle a \rangle$ with $|G| = n$. Then:
-> 1. For each divisor $d$ of $n$, $G$ has a **unique** subgroup of order $d$, namely $\langle a^{n/d} \rangle$.
-> 2. These are all the subgroups of $G$.
-> 3. The subgroup of order $d$ has $\varphi(d)$ generators.
+**Proof.** Let $G = \langle a \rangle$ be cyclic and let $H \leq G$.
 
-*Proof.*
-1. $\langle a^{n/d} \rangle$ has order $|a^{n/d}| = n/\gcd(n, n/d) = n/(n/d) = d$. Existence ✓.
-2. Let $H \leq G$, $|H| = d$. By Theorem 6.5, $H = \langle a^m \rangle$ for some $m \mid n$ (actually for $m = n/d$). Uniqueness — see proof.
-3. Already covered in Theorem 6.4 applied to the order-$d$ subgroup. $\blacksquare$
+**Case 1: $H = \{e\}$.** Then $H = \langle e \rangle$, which is cyclic (generated by $e$). $\checkmark$
 
-**Example 8 (Lattice of $\mathbb{Z}_{12}$).** Divisors of 12: 1, 2, 3, 4, 6, 12. Subgroups:
-- $\{0\}$ (order 1)
-- $\langle 6 \rangle = \{0, 6\}$ (order 2)
-- $\langle 4 \rangle = \{0, 4, 8\}$ (order 3)
-- $\langle 3 \rangle = \{0, 3, 6, 9\}$ (order 4)
-- $\langle 2 \rangle = \{0, 2, 4, 6, 8, 10\}$ (order 6)
-- $\mathbb{Z}_{12}$ (order 12)
+**Case 2: $H \neq \{e\}$.** Consider the set
+$$S = \{m \in \mathbb{Z}_{>0} : a^m \in H\}.$$
 
-Hasse diagram:
+*$S$ is non-empty.* Since $H \neq \{e\}$, there exists $h \in H$ with $h \neq e$. As $H \leq G = \langle a\rangle$, we have $h = a^k$ for some integer $k$. Since $h \neq e$, we have $k \neq 0$. Also $h^{-1} = a^{-k} \in H$. So either $k > 0$ (giving $k \in S$) or $k < 0$ (giving $-k \in S$, since $a^{-k} = h^{-1} \in H$). In either case, $S$ is non-empty.
+
+*Let $m = \min S$.* By the well-ordering principle.
+
+**Claim: $H = \langle a^m \rangle$.**
+
+*($\supseteq$) $\langle a^m \rangle \subseteq H$.* Since $a^m \in H$ and $H$ is a subgroup, all powers $(a^m)^j = a^{mj}$ for $j \in \mathbb{Z}$ lie in $H$. Hence $\langle a^m \rangle \subseteq H$.
+
+*($\subseteq$) $H \subseteq \langle a^m \rangle$.* Take any $h \in H$. Write $h = a^k$ for some $k \in \mathbb{Z}$. Apply the division algorithm to $k$ by $m$:
+$$k = qm + r, \quad 0 \leq r < m.$$
+
+Now compute $a^r$:
+$$a^r = a^{k - qm} = a^k \cdot a^{-qm} = a^k \cdot (a^m)^{-q}.$$
+
+- $a^k = h \in H$.
+- $(a^m)^{-q} \in H$ (since $a^m \in H$ and $H$ is closed under inverses and products).
+
+Hence $a^r = a^k \cdot (a^m)^{-q} \in H$ (product of elements of $H$).
+
+Since $0 \leq r < m$ and $a^r \in H$: if $r > 0$, then $r \in S$ with $r < m = \min S$, contradicting minimality. Hence $r = 0$, giving $k = qm$ and
+$$h = a^k = a^{qm} = (a^m)^q \in \langle a^m \rangle. \checkmark$$
+
+Conclusion: $H = \langle a^m \rangle$, which is cyclic. $\blacksquare$
+
+*Remark (why this proof is so clean).* The argument relies on two principles: well-ordering (to find the least $m$) and the division algorithm (to decompose any exponent). These are exactly the ingredients in the proof that every ideal of $\mathbb{Z}$ is principal — and indeed this is the same argument in disguise, since subgroups of $\mathbb{Z}$ under addition are exactly the ideals of the ring $\mathbb{Z}$.
+
+*Remark (infinite cyclic groups).* The proof works for infinite $G = \langle a \rangle \cong \mathbb{Z}$ as well. Subgroups of $\mathbb{Z}$ are $\{0\}$ and $m\mathbb{Z}$ for each $m \in \mathbb{Z}_{>0}$ — all cyclic, generated by $m$.
+
+> **Theorem 6.6 (Fundamental Theorem of Cyclic Groups).** Let $G = \langle a \rangle$ with $|G| = n < \infty$. Then:
+> 1. For each divisor $d \mid n$, $G$ has a **unique** subgroup of order $d$, namely $\langle a^{n/d} \rangle$.
+> 2. Every subgroup of $G$ arises this way (i.e., these are all the subgroups).
+> 3. The subgroup of order $d$ has exactly $\varphi(d)$ generators.
+
+**Proof.** We prove each claim carefully.
+
+**(1) Existence and uniqueness of subgroup of order $d$.**
+
+*Existence.* Let $d \mid n$, and consider $H_d := \langle a^{n/d} \rangle$. Then
+$$|H_d| = |a^{n/d}| = \frac{n}{\gcd(n, n/d)}$$
+by Theorem 6.1(2). Now $\gcd(n, n/d) = n/d$ (since $n/d \mid n$), so
+$$|H_d| = \frac{n}{n/d} = d. \checkmark$$
+
+So $H_d$ is a subgroup of order $d$, proving existence.
+
+*Uniqueness.* Suppose $H \leq G$ with $|H| = d$. By Theorem 6.5, $H = \langle a^m \rangle$ for some positive integer $m$ (taking $m$ to be the minimal positive integer with $a^m \in H$). We'll show $m = n/d$, from which $H = H_d$.
+
+The order of $H$ is $|a^m| = n/\gcd(n, m)$ by Theorem 6.1(2). Setting this equal to $d$:
+$$d = \frac{n}{\gcd(n, m)} \implies \gcd(n, m) = \frac{n}{d}.$$
+
+So $\gcd(n, m) = n/d$. In particular, $n/d \mid m$.
+
+Hence $a^m \in \langle a^{n/d} \rangle = H_d$. So $H = \langle a^m \rangle \subseteq H_d$. But both $H$ and $H_d$ have order $d$, and a subset of a finite set of the same cardinality is the whole set. Hence $H = H_d$. $\checkmark$
+
+**(2) Every subgroup arises this way.**
+
+Let $H \leq G$ be arbitrary. By Theorem 6.5, $H$ is cyclic, say $H = \langle a^m \rangle$. Its order is $|a^m| = n/\gcd(n, m) =: d$, which is a divisor of $n$. Hence $H$ is a subgroup of order $d$, and by uniqueness (part 1), $H = H_d = \langle a^{n/d}\rangle$. $\checkmark$
+
+**(3) Number of generators of the subgroup of order $d$.**
+
+$H_d$ is itself cyclic of order $d$, so by Theorem 6.2, $H_d \cong \mathbb{Z}_d$. By Theorem 6.4, $\mathbb{Z}_d$ has $\varphi(d)$ generators. Hence $H_d$ has $\varphi(d)$ generators. $\checkmark$ $\blacksquare$
+
+**Concrete form of the generators.** If $H_d = \langle a^{n/d} \rangle$, then the generators of $H_d$ are the elements $(a^{n/d})^k = a^{kn/d}$ where $\gcd(k, d) = 1$ and $1 \leq k \leq d$.
+
+*Remark (subgroup lattice $\leftrightarrow$ divisor lattice).* Part (1) establishes a bijection
+$$\{\text{divisors of } n\} \longleftrightarrow \{\text{subgroups of } \mathbb{Z}_n\}, \quad d \mapsto \text{(unique subgroup of order } d).$$
+
+Moreover this bijection is a **lattice isomorphism**: containment of subgroups corresponds to divisibility of orders. (Specifically, $H_{d_1} \leq H_{d_2} \iff d_1 \mid d_2$.)
+
+**Example 8 (Lattice of $\mathbb{Z}_{12}$).** List all subgroups of $\mathbb{Z}_{12}$ and draw the Hasse diagram.
+
+*Solution.*
+
+*Step 1: Divisors of $12$.* $\{1, 2, 3, 4, 6, 12\}$. So there are $6$ subgroups.
+
+*Step 2: For each divisor $d$, the unique subgroup of order $d$ is $\langle 12/d \rangle$.*
+
+| $d$ | $12/d$ | Subgroup $\langle 12/d \rangle$ | Elements |
+|-----|--------|--------------------------------|----------|
+| $1$ | $12 \equiv 0$ | $\langle 0 \rangle$ | $\{0\}$ |
+| $2$ | $6$ | $\langle 6 \rangle$ | $\{0, 6\}$ |
+| $3$ | $4$ | $\langle 4 \rangle$ | $\{0, 4, 8\}$ |
+| $4$ | $3$ | $\langle 3 \rangle$ | $\{0, 3, 6, 9\}$ |
+| $6$ | $2$ | $\langle 2 \rangle$ | $\{0, 2, 4, 6, 8, 10\}$ |
+| $12$ | $1$ | $\langle 1 \rangle = \mathbb{Z}_{12}$ | $\{0, 1, \ldots, 11\}$ |
+
+*Step 3: Containments.* $H_{d_1} \leq H_{d_2} \iff d_1 \mid d_2$. Hasse diagram (covering relations):
+
 ```
-       Z_12
-       /  \
-    ⟨2⟩   ⟨3⟩
-     |   X  |
-    ⟨4⟩   ⟨6⟩
-       \  /
-       {0}
+              Z_12  (order 12)
+              /    \
+         <2>         <3>
+        (ord 6)    (ord 4)
+         /  \      /
+      <4>    <6>
+    (ord 3)(ord 2)
+          \  /
+           <0>  (order 1)
 ```
-The lattice of subgroups of $\mathbb{Z}_{12}$ is **isomorphic** to the divisor lattice of 12.
+
+More precisely, the cover relations are: $\langle 2\rangle \lessdot \mathbb{Z}_{12}$, $\langle 3\rangle \lessdot \mathbb{Z}_{12}$, $\langle 4\rangle \lessdot \langle 2\rangle$, $\langle 6\rangle \lessdot \langle 2\rangle$, $\langle 6\rangle \lessdot \langle 3\rangle$, $\langle 0\rangle \lessdot \langle 4\rangle$, $\langle 0\rangle \lessdot \langle 6\rangle$.
+
+*Verification.* E.g., $\langle 6 \rangle \subseteq \langle 2 \rangle$: $6 = 3 \cdot 2 \in \langle 2 \rangle$. $\checkmark$ And $\langle 6 \rangle \subseteq \langle 3 \rangle$: $6 = 2 \cdot 3 \in \langle 3 \rangle$. $\checkmark$
+
+The subgroup lattice of $\mathbb{Z}_{12}$ is **isomorphic** (as a lattice) to the divisor lattice of $12$. $\blacksquare$
 
 ---
 
 ## 6.5 Number of Elements of Each Order
 
-> **Theorem 6.7.** In $\mathbb{Z}_n$, the number of elements of order $d$ (for $d \mid n$) is $\varphi(d)$.
+> **Theorem 6.7.** In $\mathbb{Z}_n$ (or any cyclic group of order $n$), the number of elements of order $d$ is:
+> - $\varphi(d)$ if $d \mid n$,
+> - $0$ otherwise.
 
-*Proof.* An element $k \in \mathbb{Z}_n$ has order $d$ iff it generates the unique subgroup of order $d$. That subgroup has $\varphi(d)$ generators. $\blacksquare$
+**Proof.**
 
-**Example 9.** In $\mathbb{Z}_{12}$: 
-- Order 1: $\varphi(1) = 1$ (just $0$)
-- Order 2: $\varphi(2) = 1$ ($6$)
-- Order 3: $\varphi(3) = 2$ ($4, 8$)
-- Order 4: $\varphi(4) = 2$ ($3, 9$)
-- Order 6: $\varphi(6) = 2$ ($2, 10$)
-- Order 12: $\varphi(12) = 4$ ($1, 5, 7, 11$)
+**Step 1: Elements must have order dividing $n$.** If $a \in \mathbb{Z}_n$ has order $m$, then $\langle a \rangle$ is a subgroup of order $m$. By Lagrange's theorem (see [[09-cosets-and-lagranges-theorem]]) or by the fundamental theorem (Theorem 6.6), $m \mid n$. So if $d \nmid n$, there are no elements of order $d$.
 
-Total: $1 + 1 + 2 + 2 + 2 + 4 = 12$ ✓.
+**Step 2: For $d \mid n$, exactly $\varphi(d)$ elements have order $d$.**
 
-> **Corollary 6.8 (Gauss formula).** $\sum_{d \mid n} \varphi(d) = n$.
+Let $H_d \leq \mathbb{Z}_n$ be the unique subgroup of order $d$ (by Theorem 6.6).
+
+*Key observation.* An element $a \in \mathbb{Z}_n$ has order $d$ iff $\langle a \rangle$ is a subgroup of order $d$ iff $\langle a \rangle = H_d$ (by uniqueness) iff $a$ is a generator of $H_d$.
+
+By Theorem 6.6(3), $H_d$ has exactly $\varphi(d)$ generators. Hence exactly $\varphi(d)$ elements of $\mathbb{Z}_n$ have order $d$. $\blacksquare$
+
+**Example 9 (Order count in $\mathbb{Z}_{12}$).**
+
+| Order $d$ | $\varphi(d)$ | Elements of that order |
+|-----------|-------------|------------------------|
+| $1$ | $1$ | $0$ |
+| $2$ | $1$ | $6$ |
+| $3$ | $2$ | $4, 8$ |
+| $4$ | $2$ | $3, 9$ |
+| $6$ | $2$ | $2, 10$ |
+| $12$ | $4$ | $1, 5, 7, 11$ |
+
+Total: $1 + 1 + 2 + 2 + 2 + 4 = 12$ $\checkmark$ (matches $|\mathbb{Z}_{12}| = 12$).
+
+*Spot-check for $|4| = 3$:* $4 + 4 + 4 = 12 \equiv 0 \pmod{12}$, and $4, 8 \neq 0$. So $|4| = 3$. $\checkmark$
+
+*Spot-check for $|3| = 4$:* $3, 6, 9, 12 \equiv 0$. So $|3| = 4$. $\checkmark$
+
+> **Corollary 6.8 (Gauss identity).** For every positive integer $n$,
+> $$\sum_{d \mid n} \varphi(d) = n.$$
+
+**Proof.** Sum the counts in Theorem 6.7 over all divisors $d$ of $n$. The sum equals the total number of elements in $\mathbb{Z}_n$, which is $n$:
+$$\sum_{d \mid n} (\text{elements of order } d) = |\mathbb{Z}_n| = n.$$
+
+On the other hand, by Theorem 6.7, this sum is $\sum_{d \mid n} \varphi(d)$. $\blacksquare$
+
+*Remark (historical).* This is a classical number-theoretic identity traditionally proven by Möbius inversion. The group-theoretic proof here is much shorter — a nice example of how abstract algebra yields concrete arithmetic.
 
 ---
 
 ## 6.6 Worked Examples
 
-**Example 10 (Order in $U(n)$).** Find the order of 3 in $U(20)$.
+**Example 10 (Order in $U(n)$).** Find the order of $3$ in $U(20)$.
 
-*Solution.* $U(20) = \{1, 3, 7, 9, 11, 13, 17, 19\}$, $|U(20)| = \varphi(20) = 8$. 
-$3^1 = 3, 3^2 = 9, 3^3 = 27 = 7, 3^4 = 21 = 1$. So $|3| = 4$. $\blacksquare$
+*Setup.* $U(20) = \{a \in \mathbb{Z}_{20} : \gcd(a, 20) = 1\} = \{1, 3, 7, 9, 11, 13, 17, 19\}$. Indeed $|U(20)| = \varphi(20) = \varphi(4)\varphi(5) = 2 \cdot 4 = 8$ (using $\varphi$ multiplicativity for coprime arguments).
 
-**Example 11 (Is $U(n)$ cyclic?).** Is $U(8)$ cyclic?
+*Strategy.* Compute successive powers $3^k \pmod{20}$ until we hit $1$. By Lagrange's theorem, $|3|$ divides $|U(20)| = 8$, so $|3| \in \{1, 2, 4, 8\}$.
 
-*Solution.* $U(8) = \{1, 3, 5, 7\}$, order 4. Orders: $|1| = 1, |3|^2 = 9 = 1$ so $|3| = 2$. $|5|^2 = 25 = 1$ so $|5| = 2$. $|7|^2 = 49 = 1$ so $|7| = 2$. No element of order 4. Not cyclic. $U(8) \cong V_4 = \mathbb{Z}_2 \times \mathbb{Z}_2$. $\blacksquare$
+*Computation.*
+- $3^1 = 3$.
+- $3^2 = 9$.
+- $3^3 = 3 \cdot 9 = 27 \equiv 27 - 20 = 7 \pmod{20}$.
+- $3^4 = 3 \cdot 7 = 21 \equiv 1 \pmod{20}$.
 
-**Remark.** $U(n)$ is cyclic iff $n \in \{1, 2, 4, p^k, 2p^k\}$ for $p$ odd prime. This is a classical result from number theory.
+Since $3^4 \equiv 1$ and $3^1, 3^2, 3^3 \not\equiv 1$, we conclude $|3| = 4$. $\blacksquare$
 
-**Example 12 (Powers of a generator).** In $\mathbb{Z}_{20} = \langle 1 \rangle$, find the generator of $\langle 12 \rangle$ in terms of $\gcd(12, 20) = 4$.
+*Sanity check.* $|3| = 4$ divides $|U(20)| = 8$. $\checkmark$
 
-*Solution.* $\langle 12 \rangle$: $12, 24 = 4, 16, 8, 0, 12, \ldots$ Elements: $\{0, 4, 8, 12, 16\}$, order 5. This is $\langle 4 \rangle$, generated by $4 = 20/5$. Consistent with Thm 6.6. $\blacksquare$
+**Example 11 (Is $U(8)$ cyclic?).**
 
-**Example 13 (Order of element in direct product).** In $\mathbb{Z}_6 \times \mathbb{Z}_4$, find $|(2, 3)|$.
+*Setup.* $U(8) = \{1, 3, 5, 7\}$, an abelian group of order $4$.
 
-*Solution.* In $\mathbb{Z}_6$, $|2| = 3$. In $\mathbb{Z}_4$, $|3| = 4$. $|(2, 3)| = \text{lcm}(3, 4) = 12$.
+*Strategy.* $U(8)$ is cyclic iff it has an element of order $4$. By Lagrange, orders must divide $4$, so possibilities are $\{1, 2, 4\}$. Compute orders of non-identity elements.
 
-**General rule:** $|(a, b)| = \text{lcm}(|a|, |b|)$ in $G \times H$. $\blacksquare$
+*Computation.*
+- $|1| = 1$.
+- $3^2 = 9 \equiv 1 \pmod 8$. Hence $|3| = 2$.
+- $5^2 = 25 \equiv 1 \pmod 8$. Hence $|5| = 2$.
+- $7^2 = 49 \equiv 1 \pmod 8$. Hence $|7| = 2$.
 
-**Example 14 (Find all subgroups).** Subgroups of $\mathbb{Z}_{30}$?
+No element has order $4$. Hence $U(8)$ is **not cyclic**.
 
-*Solution.* Divisors of 30: 1, 2, 3, 5, 6, 10, 15, 30. Eight subgroups:
-$\{0\}, \langle 15 \rangle, \langle 10 \rangle, \langle 6 \rangle, \langle 5 \rangle, \langle 3 \rangle, \langle 2 \rangle, \mathbb{Z}_{30}$. $\blacksquare$
+*Structure.* Since $U(8)$ has order $4$ and every non-identity element has order $2$, $U(8) \cong V_4 = \mathbb{Z}_2 \times \mathbb{Z}_2$ (the Klein four-group). Explicitly, the map $U(8) \to \mathbb{Z}_2 \times \mathbb{Z}_2$ given by $1 \mapsto (0,0), 3 \mapsto (1,0), 5 \mapsto (0,1), 7 \mapsto (1,1)$ is an isomorphism (one can verify $3 \cdot 5 = 15 \equiv 7 \pmod 8$, matching $(1,0) + (0,1) = (1,1)$). $\blacksquare$
 
-**Example 15 (Generator criterion).** Which integers $k \in \{1, \ldots, 17\}$ generate $\mathbb{Z}_{18}$?
+*Remark (classical result).* $U(n)$ is cyclic iff $n \in \{1, 2, 4, p^k, 2p^k\}$ for an odd prime $p$ and $k \geq 1$. Since $8 = 2^3$ is not of this form (it's $2 \cdot 4 = 2 \cdot 2^2$, but this requires $p$ to be an *odd* prime), $U(8)$ is not cyclic. By contrast, $U(9)$ (where $n = 3^2$) is cyclic. This is a classical theorem from elementary number theory; see any standard text.
 
-*Solution.* Coprime to 18: $\{1, 5, 7, 11, 13, 17\}$. $\varphi(18) = 6$ generators. $\blacksquare$
+**Example 12 (Powers of a generator).** In $\mathbb{Z}_{20} = \langle 1 \rangle$, compute $\langle 12 \rangle$ and confirm agreement with the fundamental theorem.
+
+*Solution.*
+
+*Step 1: Compute $\langle 12 \rangle$.* List multiples of $12$ modulo $20$:
+$$1 \cdot 12 = 12, \quad 2 \cdot 12 = 24 \equiv 4, \quad 3 \cdot 12 = 36 \equiv 16, \quad 4 \cdot 12 = 48 \equiv 8, \quad 5 \cdot 12 = 60 \equiv 0.$$
+
+So $\langle 12 \rangle = \{0, 4, 8, 12, 16\}$, which has $5$ elements.
+
+*Step 2: Order of $12$.* By the order formula:
+$$|12| = \frac{20}{\gcd(20, 12)} = \frac{20}{4} = 5.$$
+
+*Step 3: Agreement with fundamental theorem.* By Theorem 6.6, the unique subgroup of $\mathbb{Z}_{20}$ of order $5$ is $\langle 20/5 \rangle = \langle 4 \rangle$. Indeed $\langle 4 \rangle = \{0, 4, 8, 12, 16\} = \langle 12 \rangle$. $\checkmark$
+
+*Interpretation.* Both $4$ and $12$ generate the same subgroup, since $12 = 3 \cdot 4$ and $\gcd(3, 5) = 1$, so $12 = 3 \cdot 4$ is a coprime multiple of $4$ within this order-$5$ subgroup. $\blacksquare$
+
+**Example 13 (Order of an element in a direct product).** In $\mathbb{Z}_6 \times \mathbb{Z}_4$, find $|(2, 3)|$.
+
+*Setup.* The direct product $\mathbb{Z}_6 \times \mathbb{Z}_4$ is a group under componentwise addition.
+
+*Step 1: Orders of individual components.*
+- In $\mathbb{Z}_6$: $|2| = 6/\gcd(6, 2) = 6/2 = 3$.
+- In $\mathbb{Z}_4$: $|3| = 4/\gcd(4, 3) = 4/1 = 4$.
+
+*Step 2: Order of $(2, 3)$.* The condition $k \cdot (2, 3) = (0, 0)$ is equivalent to $k \cdot 2 = 0$ in $\mathbb{Z}_6$ AND $k \cdot 3 = 0$ in $\mathbb{Z}_4$, which by Theorem 6.1(1) means $3 \mid k$ AND $4 \mid k$. The smallest such $k$ is $\operatorname{lcm}(3, 4) = 12$. Hence $|(2, 3)| = 12$.
+
+*General rule.* In a direct product $G \times H$, $|(g, h)| = \operatorname{lcm}(|g|, |h|)$ (provided both orders are finite). The proof mirrors Step 2.
+
+*Verification.* $12 \cdot (2, 3) = (24, 36) = (0, 0)$ since $24 = 4 \cdot 6$ and $36 = 9 \cdot 4$. $\checkmark$ And no smaller $k$ works: $k \cdot (2, 3) = (0, 0)$ requires $3 \mid k$ and $4 \mid k$, and the smallest such positive $k$ is $\operatorname{lcm}(3, 4) = 12$. $\checkmark$ $\blacksquare$
+
+**Example 14 (Find all subgroups of $\mathbb{Z}_{30}$).**
+
+*Strategy.* By Theorem 6.6, subgroups of $\mathbb{Z}_{30}$ correspond bijectively to divisors of $30$.
+
+*Step 1: Divisors of $30 = 2 \cdot 3 \cdot 5$.* Number of divisors: $(1+1)(1+1)(1+1) = 8$. They are:
+$$\{1, 2, 3, 5, 6, 10, 15, 30\}.$$
+
+*Step 2: Subgroups.* For each divisor $d$, the subgroup of order $d$ is $\langle 30/d \rangle$:
+
+| Order $d$ | $30/d$ | Subgroup |
+|-----------|--------|----------|
+| $1$ | $30 \equiv 0$ | $\{0\}$ |
+| $2$ | $15$ | $\langle 15 \rangle = \{0, 15\}$ |
+| $3$ | $10$ | $\langle 10 \rangle = \{0, 10, 20\}$ |
+| $5$ | $6$ | $\langle 6 \rangle = \{0, 6, 12, 18, 24\}$ |
+| $6$ | $5$ | $\langle 5 \rangle = \{0, 5, 10, 15, 20, 25\}$ |
+| $10$ | $3$ | $\langle 3 \rangle = \{0, 3, 6, \ldots, 27\}$ |
+| $15$ | $2$ | $\langle 2 \rangle = \{0, 2, 4, \ldots, 28\}$ |
+| $30$ | $1$ | $\mathbb{Z}_{30}$ |
+
+So there are $8$ subgroups total. $\blacksquare$
+
+**Example 15 (Generator criterion for $\mathbb{Z}_{18}$).** Which integers $k \in \{1, 2, \ldots, 17\}$ generate $\mathbb{Z}_{18}$?
+
+*Solution.* By Theorem 6.4, generators are $k$ with $\gcd(k, 18) = 1$. Since $18 = 2 \cdot 3^2$, we need $k$ not divisible by $2$ or $3$. Check each:
+- $k = 1$: $\gcd(1, 18) = 1$. $\checkmark$
+- $k = 5$: $\gcd(5, 18) = 1$. $\checkmark$
+- $k = 7$: $\gcd(7, 18) = 1$. $\checkmark$
+- $k = 11$: $\gcd(11, 18) = 1$. $\checkmark$
+- $k = 13$: $\gcd(13, 18) = 1$. $\checkmark$
+- $k = 17$: $\gcd(17, 18) = 1$. $\checkmark$
+
+All other $k \in \{1, \ldots, 17\}$ are divisible by $2$ or $3$, hence fail.
+
+Generators: $\{1, 5, 7, 11, 13, 17\}$. Count: $\varphi(18) = 18 \cdot (1 - 1/2)(1 - 1/3) = 18 \cdot 1/2 \cdot 2/3 = 6$. $\checkmark$ $\blacksquare$
 
 ---
 
@@ -175,41 +489,229 @@ $\{0\}, \langle 15 \rangle, \langle 10 \rangle, \langle 6 \rangle, \langle 5 \ra
 3. List all subgroups of $\mathbb{Z}_{18}$ in a Hasse diagram.
 4. In $U(21)$, find the order of $2$.
 5. Is $\mathbb{Z}_2 \times \mathbb{Z}_3$ cyclic? Is $\mathbb{Z}_2 \times \mathbb{Z}_4$ cyclic?
-6. Find all elements of order 5 in $\mathbb{Z}_{20}$.
+6. Find all elements of order $5$ in $\mathbb{Z}_{20}$.
 7. Prove: if $G$ is a group with $|G| = p$ prime, then $G$ is cyclic.
 8. Show: if $\gcd(m, n) = 1$, then $\mathbb{Z}_m \times \mathbb{Z}_n \cong \mathbb{Z}_{mn}$.
 
 ### Solutions
 
-**Solution 1.** $|(1, 2)| = \text{lcm}(|1|_{\mathbb{Z}_2}, |2|_{\mathbb{Z}_3}) = \text{lcm}(2, 3) = 6$. $\blacksquare$
+**Solution 1.** Find $|(1, 2)|$ in $\mathbb{Z}_2 \times \mathbb{Z}_3$.
 
-**Solution 2.** $\varphi(24) = \varphi(8) \varphi(3) = 4 \cdot 2 = 8$. $\blacksquare$
+*Step 1: Component orders.*
+- In $\mathbb{Z}_2$: $|1| = 2/\gcd(2, 1) = 2$.
+- In $\mathbb{Z}_3$: $|2| = 3/\gcd(3, 2) = 3$.
 
-**Solution 3.** Divisors of 18: 1, 2, 3, 6, 9, 18.
+*Step 2: Order in the product.* By the direct-product order rule (Example 13 above),
+$$|(1, 2)| = \operatorname{lcm}(|1|, |2|) = \operatorname{lcm}(2, 3) = 6.$$
+
+*Verification.* $k \cdot (1, 2) = (0, 0)$ iff $k \cdot 1 = 0$ in $\mathbb{Z}_2$ (so $2 \mid k$) and $k \cdot 2 = 0$ in $\mathbb{Z}_3$ (so $3 \mid k$). Smallest such $k > 0$ is $\operatorname{lcm}(2, 3) = 6$. $\checkmark$
+
+So $|(1, 2)| = 6$. $\blacksquare$
+
+*Remark.* Since $|\mathbb{Z}_2 \times \mathbb{Z}_3| = 6$ and $(1, 2)$ has order $6$, it generates the entire group. So $\mathbb{Z}_2 \times \mathbb{Z}_3$ is cyclic, confirming that $\mathbb{Z}_2 \times \mathbb{Z}_3 \cong \mathbb{Z}_6$ (a special case of the Chinese Remainder isomorphism — Problem 8).
+
+---
+
+**Solution 2.** Number of generators of $\mathbb{Z}_{24}$.
+
+*Strategy.* By Theorem 6.4, the number of generators is $\varphi(24)$.
+
+*Computation using multiplicativity.* Factor $24 = 2^3 \cdot 3$. Then
+$$\varphi(24) = \varphi(2^3) \cdot \varphi(3) = (2^3 - 2^2) \cdot (3 - 1) = 4 \cdot 2 = 8.$$
+
+*Alternative formula.* $\varphi(24) = 24 \cdot (1 - 1/2)(1 - 1/3) = 24 \cdot 1/2 \cdot 2/3 = 8$.
+
+*Explicit list (verification).* Integers in $\{1, \ldots, 23\}$ coprime to $24$ (not divisible by $2$ or $3$): $\{1, 5, 7, 11, 13, 17, 19, 23\}$. Count: $8$. $\checkmark$
+
+Hence $\mathbb{Z}_{24}$ has $\boxed{8}$ generators. $\blacksquare$
+
+---
+
+**Solution 3.** Subgroups of $\mathbb{Z}_{18}$ with Hasse diagram.
+
+*Step 1: Divisors of $18 = 2 \cdot 3^2$.* Number of divisors: $(1 + 1)(2 + 1) = 6$. They are:
+$$\{1, 2, 3, 6, 9, 18\}.$$
+
+*Step 2: Subgroups.* For each divisor $d$, the unique subgroup of order $d$ is $\langle 18/d \rangle$:
+
+| Order $d$ | $18/d$ | Subgroup $H_d$ | Elements |
+|-----------|--------|----------------|----------|
+| $1$ | $18 \equiv 0$ | $\{0\}$ | $\{0\}$ |
+| $2$ | $9$ | $\langle 9 \rangle$ | $\{0, 9\}$ |
+| $3$ | $6$ | $\langle 6 \rangle$ | $\{0, 6, 12\}$ |
+| $6$ | $3$ | $\langle 3 \rangle$ | $\{0, 3, 6, 9, 12, 15\}$ |
+| $9$ | $2$ | $\langle 2 \rangle$ | $\{0, 2, 4, 6, 8, 10, 12, 14, 16\}$ |
+| $18$ | $1$ | $\mathbb{Z}_{18}$ | all |
+
+*Step 3: Containment relations.* $H_{d_1} \leq H_{d_2} \iff d_1 \mid d_2$. Using this:
+
+- $\{0\} \leq H_2, H_3$ (since $1 \mid 2, 3$)
+- $H_2 \leq H_6$ (since $2 \mid 6$)
+- $H_3 \leq H_6, H_9$ (since $3 \mid 6, 3 \mid 9$)
+- $H_6 \leq \mathbb{Z}_{18}$ (since $6 \mid 18$)
+- $H_9 \leq \mathbb{Z}_{18}$ (since $9 \mid 18$)
+
+Note: $H_2 \not\leq H_9$ and $H_9 \not\leq H_2$ because $2 \nmid 9$ and $9 \nmid 2$. Similarly $H_6$ and $H_9$ are incomparable (since $6 \nmid 9$ and $9 \nmid 6$).
+
+*Hasse diagram.*
+
 ```
-       Z_18
-       /  \
-    ⟨2⟩   ⟨3⟩
-     |     |
-    ⟨6⟩   ⟨9⟩
-       \  /  \
-        X
-       / \
-    ⟨6⟩   ⟨9⟩
-       ...
+              Z_18  (order 18)
+              /    \
+           <2>      <3>
+         (ord 9)   (ord 6)
+             \    /    \
+             <6>       <9>
+           (ord 3)    (ord 2)
+                \      /
+                  <0>  (order 1)
 ```
-Actually: $\{0\} \leq \langle 9 \rangle \leq \langle 3 \rangle \leq \mathbb{Z}_{18}$; $\{0\} \leq \langle 6 \rangle \leq \langle 2 \rangle \leq \mathbb{Z}_{18}$; $\langle 3 \rangle$ and $\langle 2 \rangle$ are incomparable (neither contains the other). Also $\langle 9 \rangle$ and $\langle 6 \rangle$ are incomparable. 6 subgroups. $\blacksquare$
 
-**Solution 4.** $U(21) = \{k : \gcd(k, 21) = 1\} = \{1, 2, 4, 5, 8, 10, 11, 13, 16, 17, 19, 20\}$, order 12. 
-$2^1 = 2, 2^2 = 4, 2^3 = 8, 2^4 = 16, 2^5 = 32 = 11, 2^6 = 22 = 1$. $|2| = 6$. $\blacksquare$
+Cover relations explicitly:
+- $\{0\} \lessdot \langle 9\rangle$ and $\{0\} \lessdot \langle 6\rangle$
+- $\langle 9 \rangle \lessdot \langle 3 \rangle$ and $\langle 6 \rangle \lessdot \langle 3 \rangle$
+- $\langle 6 \rangle \lessdot \langle 2 \rangle$ (since $6/2 = 3$ is prime; no intermediate subgroup)
+- $\langle 3 \rangle \lessdot \mathbb{Z}_{18}$ and $\langle 2 \rangle \lessdot \mathbb{Z}_{18}$
 
-**Solution 5.** $\mathbb{Z}_2 \times \mathbb{Z}_3$: $\gcd(2, 3) = 1$, so cyclic of order 6 (isomorphic to $\mathbb{Z}_6$). $\mathbb{Z}_2 \times \mathbb{Z}_4$: $\gcd(2, 4) = 2 \neq 1$. Max element order = $\text{lcm}(2, 4) = 4 < 8$. Not cyclic. $\blacksquare$
+Total: $6$ subgroups, matching the $6$ divisors of $18$. $\blacksquare$
 
-**Solution 6.** Elements of order 5 in $\mathbb{Z}_{20}$ generate the unique subgroup of order 5, namely $\langle 4 \rangle = \{0, 4, 8, 12, 16\}$. Generators of this subgroup (coprime to 5): $\{4, 8, 12, 16\}$ (equivalently $k \cdot 4$ for $k \in \{1, 2, 3, 4\}$, since $\gcd(k, 5) = 1$ iff $k \neq 0$). $\varphi(5) = 4$. ✓ $\blacksquare$
+*Remark.* Compare to $\mathbb{Z}_{12}$ in Example 8. Both $\mathbb{Z}_{12}$ and $\mathbb{Z}_{18}$ have $6$ divisors and the same *shape* of divisor lattice (diamond-like), but the numerical orders differ.
 
-**Solution 7.** $|G| = p$. Any non-identity $a \in G$ has $|a| \mid p$ and $|a| \neq 1$, so $|a| = p$. $\langle a \rangle$ has $p$ elements, equal to $G$. So $G = \langle a \rangle$, cyclic. $\blacksquare$
+---
 
-**Solution 8 (Chinese Remainder for groups).** Consider $\varphi: \mathbb{Z}_{mn} \to \mathbb{Z}_m \times \mathbb{Z}_n$ defined by $\varphi(k) = (k \bmod m, k \bmod n)$. Well-defined. Homomorphism ✓. Injective: if $\varphi(k) = (0, 0)$, $m \mid k$ and $n \mid k$, so $mn \mid k$ (since $\gcd(m, n) = 1$), hence $k = 0$ in $\mathbb{Z}_{mn}$. Surjective by counting: both sides have $mn$ elements. So $\varphi$ is an isomorphism. $\blacksquare$
+**Solution 4.** Order of $2$ in $U(21)$.
+
+*Step 1: Structure of $U(21)$.* $U(21) = \{a \in \mathbb{Z}_{21} : \gcd(a, 21) = 1\}$. Since $21 = 3 \cdot 7$, we exclude multiples of $3$ and $7$:
+$$U(21) = \{1, 2, 4, 5, 8, 10, 11, 13, 16, 17, 19, 20\}.$$
+Order: $|U(21)| = \varphi(21) = \varphi(3)\varphi(7) = 2 \cdot 6 = 12$.
+
+*Step 2: Constraints from Lagrange's theorem.* $|2|$ divides $12$, so $|2| \in \{1, 2, 3, 4, 6, 12\}$.
+
+*Step 3: Compute powers of $2$ modulo $21$.*
+- $2^1 = 2$.
+- $2^2 = 4$.
+- $2^3 = 8$.
+- $2^4 = 16$.
+- $2^5 = 32 = 21 + 11 \equiv 11 \pmod{21}$.
+- $2^6 = 2 \cdot 11 = 22 \equiv 1 \pmod{21}$.
+
+*Step 4: Conclusion.* $2^6 \equiv 1 \pmod{21}$ and $2^1, 2^2, 2^3 \not\equiv 1$. Also $|2| \neq 4$ since $2^4 = 16 \neq 1$. So $|2| = 6$.
+
+*Consistency check.* $6$ divides $12 = |U(21)|$. $\checkmark$
+
+Therefore $|2| = 6$. $\blacksquare$
+
+---
+
+**Solution 5.** Is $\mathbb{Z}_2 \times \mathbb{Z}_3$ cyclic? Is $\mathbb{Z}_2 \times \mathbb{Z}_4$ cyclic?
+
+*Part (a): $\mathbb{Z}_2 \times \mathbb{Z}_3$.*
+
+We seek an element of order $6 = |\mathbb{Z}_2 \times \mathbb{Z}_3|$. For any $(a, b) \in \mathbb{Z}_2 \times \mathbb{Z}_3$:
+$$|(a, b)| = \operatorname{lcm}(|a|, |b|).$$
+
+Since $|a| \mid 2$ and $|b| \mid 3$, we have $|a| \in \{1, 2\}$ and $|b| \in \{1, 3\}$. The maximum $\operatorname{lcm}(|a|, |b|) = \operatorname{lcm}(2, 3) = 6$, achieved by $(a, b) = (1, 1)$ or any element with $|a| = 2, |b| = 3$.
+
+So $(1, 1)$ has order $6$, hence generates $\mathbb{Z}_2 \times \mathbb{Z}_3$. **Cyclic.** In fact, $\mathbb{Z}_2 \times \mathbb{Z}_3 \cong \mathbb{Z}_6$.
+
+*General principle.* $\gcd(2, 3) = 1$, which forces $\operatorname{lcm} = \text{product}$, realizing a cyclic generator. See Problem 8.
+
+*Part (b): $\mathbb{Z}_2 \times \mathbb{Z}_4$.*
+
+We seek an element of order $8 = |\mathbb{Z}_2 \times \mathbb{Z}_4|$. For any $(a, b)$:
+$$|(a, b)| = \operatorname{lcm}(|a|, |b|),$$
+where $|a| \mid 2$ and $|b| \mid 4$. So $|(a, b)| \in \{1, 2, 4\} \cup \{\operatorname{lcm}(2, 4)\} = \{1, 2, 4\}$.
+
+The maximum possible order of an element is $\max\{\operatorname{lcm}(|a|, |b|)\} = \operatorname{lcm}(2, 4) = 4 < 8$.
+
+So no element has order $8$. **Not cyclic.**
+
+*General principle.* $\gcd(2, 4) = 2 \neq 1$, blocking the realization of an order-$8$ element. Indeed, $\mathbb{Z}_2 \times \mathbb{Z}_4$ is a distinct group of order $8$, not isomorphic to $\mathbb{Z}_8$.
+
+*Conclusion.* $\mathbb{Z}_2 \times \mathbb{Z}_3 \cong \mathbb{Z}_6$ is cyclic; $\mathbb{Z}_2 \times \mathbb{Z}_4 \not\cong \mathbb{Z}_8$ is not cyclic. $\blacksquare$
+
+---
+
+**Solution 6.** Find all elements of order $5$ in $\mathbb{Z}_{20}$.
+
+*Step 1: Verify such elements exist.* By Theorem 6.7, elements of order $5$ exist iff $5 \mid 20$. Since $5 \mid 20$, they do, and there are exactly $\varphi(5) = 4$ of them.
+
+*Step 2: Locate the subgroup of order $5$.* By Theorem 6.6, the unique subgroup of order $5$ is
+$$H_5 = \langle 20/5 \rangle = \langle 4 \rangle = \{0, 4, 8, 12, 16\}.$$
+
+The elements of order $5$ are exactly the generators of $H_5$.
+
+*Step 3: Identify generators of $H_5$.* Every element of $H_5$ is of the form $k \cdot 4$ for $k \in \{0, 1, 2, 3, 4\}$. The element $k \cdot 4$ generates $H_5$ iff $\gcd(k, 5) = 1$ (by Theorem 6.4 applied to the cyclic group $H_5 \cong \mathbb{Z}_5$). So $k \in \{1, 2, 3, 4\}$ (i.e., all nonzero $k$, since $5$ is prime).
+
+The generators are:
+- $k = 1$: $1 \cdot 4 = 4$.
+- $k = 2$: $2 \cdot 4 = 8$.
+- $k = 3$: $3 \cdot 4 = 12$.
+- $k = 4$: $4 \cdot 4 = 16$.
+
+*Verification via order formula.* For each of these $m$, we should have $|m| = 20/\gcd(20, m) = 5$:
+- $|4| = 20/\gcd(20, 4) = 20/4 = 5$. $\checkmark$
+- $|8| = 20/\gcd(20, 8) = 20/4 = 5$. $\checkmark$
+- $|12| = 20/\gcd(20, 12) = 20/4 = 5$. $\checkmark$
+- $|16| = 20/\gcd(20, 16) = 20/4 = 5$. $\checkmark$
+
+Elements of order $5$ in $\mathbb{Z}_{20}$: $\boxed{\{4, 8, 12, 16\}}$. Count: $\varphi(5) = 4$. $\checkmark$ $\blacksquare$
+
+---
+
+**Solution 7.** Prove: if $|G| = p$ prime, then $G$ is cyclic.
+
+*Setup.* Let $G$ be a group of prime order $p$. We must show $G = \langle a \rangle$ for some $a \in G$.
+
+*Step 1: Choose a non-identity element.* Since $p \geq 2$, $G$ has at least $2$ elements, so there exists $a \in G$ with $a \neq e$.
+
+*Step 2: Analyze the order of $a$.* Let $n = |a|$. Then $\langle a \rangle$ is a subgroup of $G$ with $|\langle a \rangle| = n$.
+
+By Lagrange's theorem (see [[09-cosets-and-lagranges-theorem]]), $n = |\langle a\rangle|$ divides $|G| = p$. Since $p$ is prime, $n \in \{1, p\}$.
+
+- If $n = 1$: $a^1 = e$, so $a = e$. Contradicts $a \neq e$.
+- If $n = p$: $\langle a \rangle$ has $p$ elements. Since $\langle a \rangle \subseteq G$ and $|G| = p$, we conclude $\langle a \rangle = G$.
+
+*Step 3: Conclusion.* $G = \langle a \rangle$, so $G$ is cyclic (and by Theorem 6.2, $G \cong \mathbb{Z}_p$). $\blacksquare$
+
+*Remark (a cornerstone result).* This shows that *every* group of prime order is both cyclic and abelian. In particular, for each prime $p$ there is, up to isomorphism, only **one** group of order $p$ — namely $\mathbb{Z}_p$. This is a foundational step toward the structure theorem for finite abelian groups.
+
+*Alternative proof avoiding Lagrange.* Let $a \neq e$ in $G$. Consider $\langle a \rangle$. It's a subgroup containing at least $\{e, a\}$, so $|\langle a \rangle| \geq 2$. Moreover, $|\langle a\rangle|$ divides $|G| = p$... (reduces to same argument). The essential input is Lagrange's theorem.
+
+---
+
+**Solution 8 (Chinese Remainder Theorem for groups).** If $\gcd(m, n) = 1$, then $\mathbb{Z}_m \times \mathbb{Z}_n \cong \mathbb{Z}_{mn}$.
+
+*Strategy.* We produce an explicit isomorphism $\varphi: \mathbb{Z}_{mn} \to \mathbb{Z}_m \times \mathbb{Z}_n$ given by $\varphi([k]_{mn}) = ([k]_m, [k]_n)$.
+
+*Step 1: $\varphi$ is well-defined.* Suppose $[k]_{mn} = [k']_{mn}$, i.e., $mn \mid k - k'$. Then $m \mid k - k'$ and $n \mid k - k'$, so $[k]_m = [k']_m$ and $[k]_n = [k']_n$. Hence $\varphi([k]_{mn}) = \varphi([k']_{mn})$. $\checkmark$
+
+*Step 2: $\varphi$ is a homomorphism.*
+$$\varphi([j]_{mn} + [k]_{mn}) = \varphi([j + k]_{mn}) = ([j + k]_m, [j + k]_n) = ([j]_m + [k]_m, [j]_n + [k]_n).$$
+
+This equals $([j]_m, [j]_n) + ([k]_m, [k]_n) = \varphi([j]_{mn}) + \varphi([k]_{mn})$. $\checkmark$
+
+*Step 3: $\varphi$ is injective.* Suppose $\varphi([k]_{mn}) = ([0]_m, [0]_n)$, i.e., $[k]_m = [0]_m$ and $[k]_n = [0]_n$. This means $m \mid k$ and $n \mid k$.
+
+**Claim:** $m \mid k$ and $n \mid k$ with $\gcd(m, n) = 1$ imply $mn \mid k$.
+
+*Proof of claim.* Write $k = m a$ for some integer $a$. Then $n \mid ma$. Since $\gcd(m, n) = 1$, Euclid's lemma gives $n \mid a$. So $a = nb$ for some integer $b$, hence $k = mnb$ and $mn \mid k$. $\checkmark$
+
+Hence $[k]_{mn} = [0]_{mn}$. So $\ker \varphi = \{[0]_{mn}\}$, meaning $\varphi$ is injective.
+
+*Step 4: $\varphi$ is surjective.* Both $\mathbb{Z}_{mn}$ and $\mathbb{Z}_m \times \mathbb{Z}_n$ have $mn$ elements. An injection between finite sets of equal size is a bijection. Hence $\varphi$ is surjective. $\checkmark$
+
+*Step 5: Conclusion.* $\varphi$ is a bijective homomorphism, i.e., an isomorphism. $\mathbb{Z}_m \times \mathbb{Z}_n \cong \mathbb{Z}_{mn}$. $\blacksquare$
+
+*Remark (the converse fails without coprimality).* If $\gcd(m, n) = d > 1$, then $\mathbb{Z}_m \times \mathbb{Z}_n$ has max element order $\operatorname{lcm}(m, n) = mn/d < mn$ (see Solution 5(b)), so $\mathbb{Z}_m \times \mathbb{Z}_n \not\cong \mathbb{Z}_{mn}$. The coprimality hypothesis is essential.
+
+*Remark (classical CRT).* This is the group-theoretic version of the classical Chinese Remainder Theorem, which in number-theoretic language says: given coprime $m, n$, the system
+$$x \equiv a \pmod m, \quad x \equiv b \pmod n$$
+has a unique solution modulo $mn$. Our proof above is essentially a clean restatement.
+
+*Application.* Iterating: if $n = p_1^{a_1} \cdots p_r^{a_r}$ is the prime factorization, then
+$$\mathbb{Z}_n \cong \mathbb{Z}_{p_1^{a_1}} \times \cdots \times \mathbb{Z}_{p_r^{a_r}}.$$
+This will be useful for analyzing $U(n)$ and for the structure theorem for finite abelian groups.
 
 ---
 
@@ -222,4 +724,4 @@ $2^1 = 2, 2^2 = 4, 2^3 = 8, 2^4 = 16, 2^5 = 32 = 11, 2^6 = 22 = 1$. $|2| = 6$. $
 - [[09-cosets-and-lagranges-theorem]] — Lagrange's theorem generalizes the structure of cyclic groups
 - [[11-direct-products]] — $\mathbb{Z}_m \times \mathbb{Z}_n$ and when it's cyclic
 
-**Takeaway.** Cyclic groups are completely understood: one for each integer $n \geq 1$ (finite) plus $\mathbb{Z}$ (infinite). Their subgroup lattice matches the divisor lattice of $n$. The order formula $|a^k| = n/\gcd(n, k)$ is the single most-used computation in cyclic-group problems.
+**Takeaway.** Cyclic groups are completely understood: one for each integer $n \geq 1$ (finite) plus $\mathbb{Z}$ (infinite). Their subgroup lattice matches the divisor lattice of $n$. The order formula $|a^k| = n/\gcd(n, k)$ is the single most-used computation in cyclic-group problems — master it, and nearly every exercise in this chapter becomes mechanical.
