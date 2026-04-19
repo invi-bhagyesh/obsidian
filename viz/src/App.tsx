@@ -10,6 +10,7 @@ import Compactness from "./pages/ra/Compactness"
 import Sequences from "./pages/ra/Sequences"
 import Cauchy from "./pages/ra/Cauchy"
 import Series from "./pages/ra/Series"
+import Continuity from "./pages/ra/Continuity"
 import { TOPICS } from "./topics"
 
 export default function App() {
@@ -41,6 +42,7 @@ export default function App() {
           <Route path="/ra/sequences" element={<Sequences />} />
           <Route path="/ra/cauchy" element={<Cauchy />} />
           <Route path="/ra/series" element={<Series />} />
+          <Route path="/ra/continuity" element={<Continuity />} />
           {TOPICS.filter((t) => t.status === "soon").map((t) => (
             <Route key={t.slug} path={`/${t.slug}`} element={<Soon topic={t} />} />
           ))}
