@@ -87,7 +87,7 @@ export const TOPICS: Topic[] = [
   { slug: "mlc/cnf-dnf", subject: "MLC", number: 2, title: "CNF / DNF Conversion",
     blurb: "Step-through normalization.", status: "live" },
   { slug: "mlc/proof-trees", subject: "MLC", number: 3, title: "Proof Trees (Natural Deduction)",
-    blurb: "Build proofs in propositional calculus interactively.", status: "soon" },
+    blurb: "Build proofs in propositional calculus interactively.", status: "live" },
   { slug: "mlc/modus-ponens", subject: "MLC", number: 4, title: "Axiomatic Propositional Calculus",
     blurb: "Chain axioms and MP to derive theorems.", status: "soon" },
   { slug: "mlc/fol", subject: "MLC", number: 5, title: "First-Order Logic",
