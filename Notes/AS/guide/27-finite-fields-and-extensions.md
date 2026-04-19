@@ -28,7 +28,7 @@ $L$ is naturally an $\mathbb{F}$-vector space (inherited operations from $L$, sc
 ## 27.2 Algebraic and Transcendental Elements
 
 > **Definition 27.3.** Let $L/\mathbb{F}$ be an extension, $\alpha \in L$. Then $\alpha$ is **algebraic over $\mathbb{F}$** if there exists a nonzero polynomial $p(x) \in \mathbb{F}[x]$ with $p(\alpha) = 0$. Otherwise $\alpha$ is **transcendental**.
-
+	
 **Example 5.** $\sqrt 2$ is algebraic over $\mathbb{Q}$ (root of $x^2 - 2$).
 
 **Example 6.** $i$ is algebraic over $\mathbb{R}$ (root of $x^2 + 1$).

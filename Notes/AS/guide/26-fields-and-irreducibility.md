@@ -55,7 +55,7 @@ Conclusion: **no rational roots**. So $p$ has no linear factor over $\mathbb{Q}$
 Extends to: **cubic/quartic polynomial in $\mathbb{Q}[x]$ is irreducible iff it has no rational roots (and for quartic, also has no quadratic factor).**
 
 ## 26.3 Gauss's Lemma
-
+	
 > **Definition 26.5 (Primitive polynomial).** A polynomial $p(x) \in \mathbb{Z}[x]$ is **primitive** if the gcd of its coefficients is 1.
 
 Equivalently, $p$ is not divisible by any prime in $\mathbb{Z}$.

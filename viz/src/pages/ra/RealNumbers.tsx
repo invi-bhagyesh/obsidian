@@ -1,5 +1,5 @@
 import { useEffect, useMemo, useRef, useState } from "react"
-import { InlineMath, BlockMath } from "react-katex"
+import Tex from "../../components/Tex"
 import { motion, AnimatePresence } from "framer-motion"
 import { Play, Pause, RotateCcw } from "lucide-react"
 import TopicShell, { Section, Card } from "../../components/TopicShell"
@@ -114,9 +114,7 @@ function AxiomExplorer() {
               <div className="flex-1">
                 <div className="text-neutral-200">{ax.name}</div>
                 <div className="text-neutral-500 text-xs mt-0.5">
-                  <InlineMath
-                    math={ax.tex(fmt(a), fmt(b), fmt(c))}
-                  />
+                  <Tex math={ax.tex(fmt(a), fmt(b), fmt(c))} />
                 </div>
               </div>
               <span
@@ -266,7 +264,7 @@ function DensityDemo() {
           <div className="text-neutral-300">
             Smallest-denominator rational in the interval:{" "}
             <span className="font-mono text-amber-300">
-              <InlineMath math={String.raw`\frac{${rat.p}}{${rat.q}} = ${fmt(rat.p / rat.q)}`} />
+              <Tex math={String.raw`\frac{${rat.p}}{${rat.q}} = ${fmt(rat.p / rat.q)}`} />
             </span>
           </div>
         ) : (
@@ -347,9 +345,9 @@ function CompletenessDemo() {
       <p className="text-sm text-neutral-400 mb-4">
         <strong className="text-neutral-200">Completeness fails in ℚ.</strong>{" "}
         The Babylonian iteration{" "}
-        <InlineMath math="x_{n+1} = \tfrac{1}{2}(x_n + 2/x_n)" /> produces{" "}
+        <Tex math="x_{n+1} = \tfrac{1}{2}(x_n + 2/x_n)" /> produces{" "}
         <em>rational</em> terms that cluster together — they're Cauchy — yet
-        their would-be limit <InlineMath math="\sqrt{2}" /> is{" "}
+        their would-be limit <Tex math="\sqrt{2}" /> is{" "}
         <em>not</em> rational. In ℚ, this sequence has no limit.
       </p>
 
@@ -434,7 +432,7 @@ function CompletenessDemo() {
 
       <div className="mt-4 text-sm text-neutral-400">
         Latest term:{" "}
-        <InlineMath
+        <Tex
           math={String.raw`x_{${terms.length - 1}} = \frac{${latest.p.toString()}}{${latest.q.toString()}}`}
         />
       </div>
@@ -467,14 +465,14 @@ export default function RealNumbers() {
 
       <Section title="Statement of the completeness axiom">
         <Card>
-          <BlockMath math={String.raw`\text{Every nonempty subset } S \subseteq \mathbb{R} \text{ that is bounded above has a least upper bound } \sup S \in \mathbb{R}.`} />
+          <Tex block math={String.raw`\text{Every nonempty subset } S \subseteq \mathbb{R} \text{ that is bounded above has a least upper bound } \sup S \in \mathbb{R}.`} />
           <p className="mt-4 text-sm text-neutral-400">
             Equivalent formulations you'll see in the course: every Cauchy
             sequence converges; every bounded monotone sequence converges;
             nested closed intervals have nonempty intersection; every bounded
             sequence has a convergent subsequence (Bolzano–Weierstrass). The
-            demo above shows why this property fails in <InlineMath math="\mathbb{Q}" /> —
-            the iterates are Cauchy, but their "limit" <InlineMath math="\sqrt{2}" />{" "}
+            demo above shows why this property fails in <Tex math="\mathbb{Q}" /> —
+            the iterates are Cauchy, but their "limit" <Tex math="\sqrt{2}" />{" "}
             is irrational.
           </p>
         </Card>
