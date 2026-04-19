@@ -51,7 +51,7 @@ export const TOPICS: Topic[] = [
   { slug: "as/cosets", subject: "AS", number: 3, title: "Cosets & Lagrange",
     blurb: "Partition a group by left cosets of H.", status: "live" },
   { slug: "as/quotient", subject: "AS", number: 4, title: "Quotient Groups",
-    blurb: "Collapse cosets into a new group.", status: "soon" },
+    blurb: "Collapse cosets into a new group.", status: "live" },
   { slug: "as/homomorphisms", subject: "AS", number: 5, title: "Homomorphisms & Kernels",
     blurb: "Drag an arrow between groups, see what's preserved.", status: "soon" },
   { slug: "as/group-actions", subject: "AS", number: 6, title: "Group Actions",

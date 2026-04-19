@@ -16,6 +16,7 @@ import Riemann from "./pages/ra/Riemann"
 import Groups from "./pages/as/Groups"
 import SubgroupLattice from "./pages/as/SubgroupLattice"
 import Cosets from "./pages/as/Cosets"
+import Quotient from "./pages/as/Quotient"
 import { TOPICS } from "./topics"
 
 export default function App() {
@@ -53,6 +54,7 @@ export default function App() {
           <Route path="/as/groups" element={<Groups />} />
           <Route path="/as/subgroup-lattice" element={<SubgroupLattice />} />
           <Route path="/as/cosets" element={<Cosets />} />
+          <Route path="/as/quotient" element={<Quotient />} />
           {TOPICS.filter((t) => t.status === "soon").map((t) => (
             <Route key={t.slug} path={`/${t.slug}`} element={<Soon topic={t} />} />
           ))}
