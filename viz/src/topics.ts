@@ -75,7 +75,7 @@ export const TOPICS: Topic[] = [
   { slug: "vacv/complex-functions", subject: "VACV", number: 5, title: "Complex Functions — Domain Coloring",
     blurb: "z² , 1/z, exp z rendered via hue = arg, brightness = |f|.", status: "live" },
   { slug: "vacv/cr-equations", subject: "VACV", number: 6, title: "Cauchy–Riemann",
-    blurb: "Conformal maps preserve angles — watch a grid deform.", status: "soon" },
+    blurb: "Conformal maps preserve angles — watch a grid deform.", status: "live" },
   { slug: "vacv/contour-integrals", subject: "VACV", number: 7, title: "Contour Integrals & Residues",
     blurb: "Drag poles inside/outside a contour.", status: "soon" },
   { slug: "vacv/branch-cuts", subject: "VACV", number: 8, title: "Branch Cuts of log z",
