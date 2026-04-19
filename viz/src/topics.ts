@@ -79,7 +79,7 @@ export const TOPICS: Topic[] = [
   { slug: "vacv/contour-integrals", subject: "VACV", number: 7, title: "Contour Integrals & Residues",
     blurb: "Drag poles inside/outside a contour.", status: "live" },
   { slug: "vacv/branch-cuts", subject: "VACV", number: 8, title: "Branch Cuts of log z",
-    blurb: "Multi-sheeted surface of the complex log.", status: "soon" },
+    blurb: "Multi-sheeted surface of the complex log.", status: "live" },
 
   // --- MLC ---
   { slug: "mlc/truth-tables", subject: "MLC", number: 1, title: "Truth Tables & Connectives",
