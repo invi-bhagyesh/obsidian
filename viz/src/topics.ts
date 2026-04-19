@@ -49,7 +49,7 @@ export const TOPICS: Topic[] = [
   { slug: "as/subgroup-lattice", subject: "AS", number: 2, title: "Subgroup Lattice",
     blurb: "Hasse diagram of subgroups for small groups.", status: "live" },
   { slug: "as/cosets", subject: "AS", number: 3, title: "Cosets & Lagrange",
-    blurb: "Partition a group by left cosets of H.", status: "soon" },
+    blurb: "Partition a group by left cosets of H.", status: "live" },
   { slug: "as/quotient", subject: "AS", number: 4, title: "Quotient Groups",
     blurb: "Collapse cosets into a new group.", status: "soon" },
   { slug: "as/homomorphisms", subject: "AS", number: 5, title: "Homomorphisms & Kernels",
