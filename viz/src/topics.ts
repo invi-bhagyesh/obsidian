@@ -39,7 +39,7 @@ export const TOPICS: Topic[] = [
   { slug: "ra/continuity", subject: "RA", number: 10, title: "Continuity (ε–δ)",
     blurb: "Pick ε, find δ. Watch the envelope collapse.", status: "live" },
   { slug: "ra/differentiation", subject: "RA", number: 11, title: "Differentiation & MVT",
-    blurb: "Rolle, mean value theorem, tangent lines that must exist.", status: "soon" },
+    blurb: "Rolle, mean value theorem, tangent lines that must exist.", status: "live" },
   { slug: "ra/riemann", subject: "RA", number: 12, title: "Riemann(-Stieltjes) Integral",
     blurb: "Upper/lower Darboux sums squeeze together.", status: "soon" },
 

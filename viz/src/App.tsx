@@ -11,6 +11,7 @@ import Sequences from "./pages/ra/Sequences"
 import Cauchy from "./pages/ra/Cauchy"
 import Series from "./pages/ra/Series"
 import Continuity from "./pages/ra/Continuity"
+import Differentiation from "./pages/ra/Differentiation"
 import { TOPICS } from "./topics"
 
 export default function App() {
@@ -43,6 +44,7 @@ export default function App() {
           <Route path="/ra/cauchy" element={<Cauchy />} />
           <Route path="/ra/series" element={<Series />} />
           <Route path="/ra/continuity" element={<Continuity />} />
+          <Route path="/ra/differentiation" element={<Differentiation />} />
           {TOPICS.filter((t) => t.status === "soon").map((t) => (
             <Route key={t.slug} path={`/${t.slug}`} element={<Soon topic={t} />} />
           ))}
