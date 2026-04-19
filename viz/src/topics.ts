@@ -29,7 +29,7 @@ export const TOPICS: Topic[] = [
   { slug: "ra/topology-of-r", subject: "RA", number: 5, title: "Open & Closed Sets",
     blurb: "Interior, boundary, closure — drag points, watch regions update.", status: "live" },
   { slug: "ra/compactness", subject: "RA", number: 6, title: "Compactness",
-    blurb: "Heine–Borel: find a finite subcover of any open cover.", status: "soon" },
+    blurb: "Heine–Borel: find a finite subcover of any open cover.", status: "live" },
   { slug: "ra/sequences", subject: "RA", number: 7, title: "Sequences & Limits",
     blurb: "ε–N game. Pick ε, find N.", status: "soon" },
   { slug: "ra/cauchy", subject: "RA", number: 8, title: "Cauchy Sequences",

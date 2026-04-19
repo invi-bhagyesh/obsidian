@@ -6,6 +6,7 @@ import Inequalities from "./pages/ra/Inequalities"
 import SupInf from "./pages/ra/SupInf"
 import Countability from "./pages/ra/Countability"
 import Topology from "./pages/ra/Topology"
+import Compactness from "./pages/ra/Compactness"
 import { TOPICS } from "./topics"
 
 export default function App() {
@@ -33,6 +34,7 @@ export default function App() {
           <Route path="/ra/sup-inf" element={<SupInf />} />
           <Route path="/ra/countability" element={<Countability />} />
           <Route path="/ra/topology-of-r" element={<Topology />} />
+          <Route path="/ra/compactness" element={<Compactness />} />
           {TOPICS.filter((t) => t.status === "soon").map((t) => (
             <Route key={t.slug} path={`/${t.slug}`} element={<Soon topic={t} />} />
           ))}
