@@ -2,6 +2,7 @@ import { Routes, Route, Link } from "react-router-dom"
 import Home from "./pages/Home"
 import Soon from "./pages/Soon"
 import RealNumbers from "./pages/ra/RealNumbers"
+import Inequalities from "./pages/ra/Inequalities"
 import { TOPICS } from "./topics"
 
 export default function App() {
@@ -25,6 +26,7 @@ export default function App() {
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/ra/real-numbers" element={<RealNumbers />} />
+          <Route path="/ra/inequalities" element={<Inequalities />} />
           {TOPICS.filter((t) => t.status === "soon").map((t) => (
             <Route key={t.slug} path={`/${t.slug}`} element={<Soon topic={t} />} />
           ))}
