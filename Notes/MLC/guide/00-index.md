@@ -52,13 +52,13 @@ Work through files **01 → 23** in order. Each module builds on the previous:
 
 ### Module 2: Propositional Calculus (syntax-first, axiomatic)
 
-| # | Title | Core Concept | Key Results |
-|:---|:------|:-------------|:------------|
-| [[08-axiomatic-propositional-calculus]] | Axiomatic Propositional Calculus | System $\mathcal{L}$, A1, A2, A3, MP | $\vdash \alpha \to \alpha$ in 5 steps |
-| [[09-formal-proofs-and-modus-ponens]] | Formal Proofs and Modus Ponens | Derivation toolkit | HS, contraposition, DNE |
-| [[10-deduction-theorem]] | Deduction Theorem | $\Gamma, \alpha \vdash \beta \Rightarrow \Gamma \vdash \alpha \to \beta$ | Full inductive proof |
-| [[11-soundness-and-completeness]] | Soundness and Completeness | $\vdash = \models$ | Kalmár; Henkin; compactness |
-| [[12-module2-practice-problems]] | Module 2 Practice Problems | — | 20 problems |
+| #                                       | Title                            | Core Concept                                                             | Key Results                           |
+| :-------------------------------------- | :------------------------------- | :----------------------------------------------------------------------- | :------------------------------------ |
+| [[08-axiomatic-propositional-calculus]] | Axiomatic Propositional Calculus | System $\mathcal{L}$, A1, A2, A3, MP                                     | $\vdash \alpha \to \alpha$ in 5 steps |
+| [[09-formal-proofs-and-modus-ponens]]   | Formal Proofs and Modus Ponens   | Derivation toolkit                                                       | HS, contraposition, DNE               |
+| [[10-deduction-theorem]]                | Deduction Theorem                | $\Gamma, \alpha \vdash \beta \Rightarrow \Gamma \vdash \alpha \to \beta$ | Full inductive proof                  |
+| [[11-soundness-and-completeness]]       | Soundness and Completeness       | $\vdash = \models$                                                       | Kalmár; Henkin; compactness           |
+| [[12-module2-practice-problems]]        | Module 2 Practice Problems       | —                                                                        | 20 problems                           |
 
 ### Module 3: First-Order Logic
 

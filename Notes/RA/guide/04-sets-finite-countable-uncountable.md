@@ -31,7 +31,7 @@ This chapter formalises three sizes: **finite**, **countably infinite** (the siz
 > - $f$ is **surjective** (onto) if for every $b \in B$, some $a \in A$ has $f(a) = b$. Equivalently, $f(A) = B$.
 > - $f$ is **bijective** if it is both injective and surjective.
 
-A bijection $f: A \to B$ has a (unique) inverse $f^{-1}: B \to A$, itself a bijection, characterised by $f^{-1}(b) = $ the unique $a$ with $f(a) = b$.
+A bijection $f: A \to B$ has a (unique) inverse $f^{-1}: B \to A$, itself a bijection, characterised by $f^{-1}(b) = (a)$ the unique $a$ with $f(a) = b$.
 
 **Notation.** We write $A \hookrightarrow B$ to mean there exists an injection $A \to B$, and $A \twoheadrightarrow B$ for a surjection.
 

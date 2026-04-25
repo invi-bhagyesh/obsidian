@@ -538,27 +538,17 @@ Since $x$ was arbitrary, $F' = \emptyset$.
 
 ## Practice Problems
 
+
+
+### Solutions
+
+---
 1. Determine the interior, limit points, closure, boundary, and openness/closedness of:
    - **(a)** $S = (0, 1] \cup \{2\}$
    - **(b)** $S = \{(-1)^n + 1/n : n \in \mathbb{N}\}$
    - **(c)** $S = \mathbb{Q} \cap (0, 1)$
    - **(d)** $S = \bigcup_{n=1}^{\infty}(n,\ n+1)$
 
-2. Prove that a set $S \subseteq \mathbb{R}$ is open iff $S = \operatorname{int}(S)$.
-
-3. Show that $\mathbb{Z}$ has no limit points but is closed.
-
-4. Prove: if $A$ is open and $B$ is closed, then $A \setminus B$ is open and $B \setminus A$ is closed.
-
-5. Prove that $\overline{A \cup B} = \overline{A} \cup \overline{B}$ but $\overline{A \cap B} \subseteq \overline{A} \cap \overline{B}$ with possible strict inclusion.
-
-6. (Qualifying-exam style.) Prove that $\overline{\operatorname{int}(S)}$ need not equal $S$ even when $S$ is closed, and give an example.
-
-7. Show that every closed subset of $\mathbb{R}$ is the intersection of a countable family of open sets (i.e., a $G_\delta$ set).
-
-### Solutions
-
----
 
 **Solution 1(a).** $S = (0, 1] \cup \{2\}$.
 
@@ -663,6 +653,7 @@ So $S' = [1, \infty)$.
 *Interpretation.* The gaps at integers are the boundary: they are "sandwiched" between the adjacent open intervals, each of which touches them but does not include them. $\blacksquare$
 
 ---
+2. Prove that a set $S \subseteq \mathbb{R}$ is open iff $S = \operatorname{int}(S)$.
 
 **Solution 2.** Prove that $S \subseteq \mathbb{R}$ is open iff $S = \operatorname{int}(S)$.
 
@@ -687,6 +678,9 @@ $\blacksquare$
 *Interpretation.* This shows that "open" and "equal to its own interior" are two equivalent formulations of the same property. Which is useful depends on context: "$S$ is open" is the atomic declarative; "$S = \operatorname{int}(S)$" is the equation-style assertion suited to manipulating via the operators $\operatorname{int}, \overline{\cdot}, \partial$.
 
 ---
+
+3. Show that $\mathbb{Z}$ has no limit points but is closed.
+
 
 **Solution 3.** $\mathbb{Z}$ has no limit points; $\mathbb{Z}$ is closed.
 
@@ -715,6 +709,8 @@ $\blacksquare$
 *Interpretation.* $\mathbb{Z}$ is a **discrete closed set**: all points isolated, no accumulation, but topologically closed (no limit points to miss). This is typical of any discrete set with no cluster at infinity — another example is $\{n + 1/n : n \in \mathbb{N}\}$.
 
 ---
+4. Prove: if $A$ is open and $B$ is closed, then $A \setminus B$ is open and $B \setminus A$ is closed.
+
 
 **Solution 4.** $A$ open, $B$ closed $\Rightarrow A \setminus B$ open and $B \setminus A$ closed.
 
@@ -748,6 +744,8 @@ $\blacksquare$
 The "?" entries can be anything: e.g., $A = B = (0, 1)$ gives $A \setminus B = \emptyset$, both open and closed. The *guaranteed* cases are as in this problem.
 
 ---
+5. Prove that $\overline{A \cup B} = \overline{A} \cup \overline{B}$ but $\overline{A \cap B} \subseteq \overline{A} \cap \overline{B}$ with possible strict inclusion.
+
 
 **Solution 5.** $\overline{A \cup B} = \overline{A} \cup \overline{B}$ and $\overline{A \cap B} \subseteq \overline{A} \cap \overline{B}$ with possible strict inclusion.
 
@@ -786,6 +784,7 @@ So $\overline{A \cap B} = \emptyset \subsetneq \mathbb{R} = \overline{A} \cap \o
 *Interpretation.* Closure distributes over finite unions but only sub-distributes over intersections. This asymmetry traces back to the universal/existential quantifier structure of the definitions: adherence is an *existential* condition, which behaves well under unions but badly under intersections. The dual phenomenon holds for interior: $\operatorname{int}(A \cap B) = \operatorname{int}(A) \cap \operatorname{int}(B)$ but $\operatorname{int}(A \cup B) \supseteq \operatorname{int}(A) \cup \operatorname{int}(B)$ with possible strict inclusion.
 
 ---
+6. (Qualifying-exam style.) Prove that $\overline{\operatorname{int}(S)}$ need not equal $S$ even when $S$ is closed, and give an example.
 
 **Solution 6.** $\overline{\operatorname{int}(S)} \neq S$ for some closed $S$.
 
@@ -802,6 +801,8 @@ So $\overline{A \cap B} = \emptyset \subsetneq \mathbb{R} = \overline{A} \cap \o
 *Interpretation.* A closed set $S$ satisfies $\overline{\operatorname{int}(S)} = S$ precisely when $S$ is the closure of an open set, i.e., $S$ has "empty filling" or equals the closure of its own interior. Such sets are called **regular closed sets**. Non-regular closed sets (like finite sets, discrete sets, or the Cantor set) have "thin" structure that the interior cannot recover. This is the starting point for the theory of regular open sets and the Boolean algebra $RO(\mathbb{R})$ of regular open sets. $\blacksquare$
 
 ---
+
+7. Show that every closed subset of $\mathbb{R}$ is the intersection of a countable family of open sets (i.e., a $G_\delta$ set).
 
 **Solution 7.** Every closed $F \subseteq \mathbb{R}$ is a countable intersection of open sets (a $G_\delta$).
 

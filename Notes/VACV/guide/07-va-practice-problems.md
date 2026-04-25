@@ -6,22 +6,6 @@ These problems cover all VA topics at exam level. Time yourself: aim for 5-8 min
 
 ---
 
-## Section A: Gradient & Directional Derivatives
-
-**Q1.** Let $f(x,y,z) = x^2y + yz^3$. Find:
-(a) $\nabla f$
-(b) $\nabla f$ at $(1, -1, 2)$
-(c) $D_{\hat{u}}f$ at $(1, -1, 2)$ in the direction of $\vec{v} = (2, 1, -2)$
-
-**Q2.** Find the equation of the tangent plane and the normal line to the surface $x^2 + 2y^2 + 3z^2 = 12$ at the point $(1, 1, \sqrt{3})$.
-
-**Q3.** In what direction does $f(x,y,z) = xe^y + yz$ increase most rapidly at $(1, 0, 1)$? What is the maximum rate of increase?
-
-**Q4.** Find the directional derivative of $f(x,y) = e^x\cos y$ at $(0, \pi/4)$ in the direction making angle $\pi/3$ with the positive $x$-axis.
-
-**Q5.** Show that the surfaces $x^2 + y^2 + z^2 = 9$ and $z = x^2 + y^2 - 3$ are tangent to each other at $(2, -1, 2)$. *(Hint: show they share a normal direction.)*
-
----
 
 ## Section B: Divergence & Curl
 
@@ -74,8 +58,12 @@ These problems cover all VA topics at exam level. Time yourself: aim for 5-8 min
 **Q20.** Let $V$ be the region bounded by $z = 0$, $z = 1$, $x^2+y^2 = 4$. Find $\oint_S \vec{F}\cdot d\vec{S}$ for $\vec{F} = (xz, yz, z^2)$.
 
 ---
+## Section A: Gradient & Directional Derivatives
 
-## Complete Solutions
+**Q1.** Let $f(x,y,z) = x^2y + yz^3$. Find:
+(a) $\nabla f$
+(b) $\nabla f$ at $(1, -1, 2)$
+(c) $D_{\hat{u}}f$ at $(1, -1, 2)$ in the direction of $\vec{v} = (2, 1, -2)$
 
 ### Solution Q1
 (a) $\nabla f = (2xy, x^2+z^3, 3yz^2)$
@@ -85,6 +73,7 @@ These problems cover all VA topics at exam level. Time yourself: aim for 5-8 min
 (c) $\hat{u} = \frac{(2,1,-2)}{3} = (\frac{2}{3}, \frac{1}{3}, -\frac{2}{3})$
 $D_{\hat{u}}f = (-2)(\frac{2}{3}) + 9(\frac{1}{3}) + (-12)(-\frac{2}{3}) = -\frac{4}{3} + 3 + 8 = \frac{29}{3}$
 
+**Q2.** Find the equation of the tangent plane and the normal line to the surface $x^2 + 2y^2 + 3z^2 = 12$ at the point $(1, 1, \sqrt{3})$.
 ### Solution Q2
 $F(x,y,z) = x^2+2y^2+3z^2$. $\nabla F = (2x, 4y, 6z)$.
 At $(1,1,\sqrt{3})$: $\nabla F = (2, 4, 6\sqrt{3})$.
@@ -94,12 +83,18 @@ $\implies 2x + 4y + 6\sqrt{3}z = 24$, i.e., $x + 2y + 3\sqrt{3}z = 12$.
 
 Normal line: $\vec{r}(t) = (1+2t,\; 1+4t,\; \sqrt{3}+6\sqrt{3}t)$.
 
+**Q3.** In what direction does $f(x,y,z) = xe^y + yz$ increase most rapidly at $(1, 0, 1)$? What is the maximum rate of increase?
+
+
 ### Solution Q3
 $\nabla f = (e^y, xe^y+z, y)$. At $(1,0,1)$: $\nabla f = (1, 2, 0)$.
 
 Direction of fastest increase: $\hat{u} = \frac{(1,2,0)}{\sqrt{5}}$.
 
 Max rate $= \|\nabla f\| = \sqrt{1+4+0} = \sqrt{5}$.
+
+**Q4.** Find the directional derivative of $f(x,y) = e^x\cos y$ at $(0, \pi/4)$ in the direction making angle $\pi/3$ with the positive $x$-axis.
+
 
 ### Solution Q4
 $\nabla f = (e^x\cos y, -e^x\sin y)$. At $(0,\pi/4)$: $\nabla f = (\frac{\sqrt{2}}{2}, -\frac{\sqrt{2}}{2})$.
@@ -108,6 +103,7 @@ $\hat{u} = (\cos(\pi/3), \sin(\pi/3)) = (\frac{1}{2}, \frac{\sqrt{3}}{2})$.
 
 $D_{\hat{u}}f = \frac{\sqrt{2}}{2}\cdot\frac{1}{2} + (-\frac{\sqrt{2}}{2})\cdot\frac{\sqrt{3}}{2} = \frac{\sqrt{2}}{4}(1-\sqrt{3})$
 
+**Q5.** Show that the surfaces $x^2 + y^2 + z^2 = 9$ and $z = x^2 + y^2 - 3$ are tangent to each other at $(2, -1, 2)$. *(Hint: show they share a normal direction.)*
 ### Solution Q5
 Surface 1: $F_1 = x^2+y^2+z^2$. $\nabla F_1 = (2x,2y,2z)$. At $(2,-1,2)$: $\nabla F_1 = (4,-2,4)$.
 Surface 2: $F_2 = x^2+y^2-z$. $\nabla F_2 = (2x,2y,-1)$. At $(2,-1,2)$: $\nabla F_2 = (4,-2,-1)$.
