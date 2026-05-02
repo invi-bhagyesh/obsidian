@@ -33,6 +33,16 @@
 | 17 | Evaluation of Real Integrals Using Residues | [[17-real-integrals-residues]] |
 | 18 | CV Practice Problems & Solutions | [[18-cv-practice-problems]] |
 
+## Part C: Supplementary Material (Lecture-Level Detail)
+
+| # | Topic | File |
+|---|-------|------|
+| 19 | Complex Integration — Contour Integrals (Detailed, Lec 23–25) | [[19-complex-integration-detailed]] |
+| 20 | Cauchy's Integral Theorem & Formula (Detailed, Lec 26–27) | [[20-cauchy-integral-theorem-detailed]] |
+| 21 | Jacobian, Vector-Valued Gradients, Backpropagation & Neural Networks | [[21-jacobian-and-backpropagation]] |
+
+> Chapters 19–20 expand chapter 14 with the full lecture treatment (proofs, parametrisation drills, ML inequality applications, deformation principle, derivative formulas of all orders). Chapter 21 generalises the gradient from [[02-gradient-and-directional-derivatives]] to vector-valued maps, builds the Jacobian, and applies the chain rule to backpropagation in neural networks.
+
 ---
 
 ## How to Use This Guide
