@@ -1,80 +1,207 @@
-# 01 — Introduction to Database Systems
+# 01 — Introduction
 
-## 1.1 What is a Database System?
+*Source: chap1_Introduction.pdf — Database System Concepts, 7th Ed., Silberschatz, Korth and Sudarshan*
 
-A **DBMS** (Database Management System) contains information about a particular enterprise:
+## Outline
+
+- Database-System Applications
+- Purpose of Database Systems
+- View of Data
+- Database Languages
+- Database Design
+- Database Engine
+- Database Architecture
+- Database Users and Administrators
+
+---
+
+## 1.1 Database Systems
+
+A **DBMS** contains information about a particular enterprise:
 - Collection of interrelated data
 - Set of programs to access the data
 - An environment that is both **convenient** and **efficient** to use
 
-Database systems manage data that is **highly valuable**, **relatively large**, and **accessed by multiple users and applications, often at the same time**.
+Database systems are used to manage collections of data that are:
+- Highly valuable
+- Relatively large
+- Accessed by multiple users and applications, often at the same time
 
-### Database-System Applications
-- **Enterprise**: sales, accounting, HR
-- **Manufacturing**: production, inventory, supply chain
-- **Banking & finance**: accounts, loans, credit-card transactions, real-time market data
-- **Universities**: registration, grades
-- **Airlines**: reservations, schedules
-- **Telecom**: call/text/data records, billing
-- **Web services**: online retailers, advertising
-- **Document databases**, **navigation systems**
+A **modern database system** is a complex software system whose task is to manage a large, complex collection of data.
+
+**Databases touch all aspects of our lives.**
 
 ---
 
-## 1.2 Purpose of Database Systems — Drawbacks of File-System Approach
+## 1.2 Database Applications Examples
 
-Early database applications were built on top of file systems, leading to:
+### Enterprise Information
+- **Sales:** customers, products, purchases
+- **Accounting:** payments, receipts, assets
+- **Human Resources:** information about employees, salaries, payroll taxes
 
-1. **Data redundancy and inconsistency** — same data in multiple files/formats.
-2. **Difficulty in accessing data** — must write a new program for each new task.
-3. **Data isolation** — multiple files and formats.
-4. **Integrity problems** — constraints buried in program code, hard to add/modify.
-5. **Atomicity of updates** — failures can leave the database in an inconsistent state. Example: fund transfer must complete fully or not at all.
-6. **Concurrent access by multiple users** — uncontrolled concurrent access can cause inconsistencies (e.g., two withdrawals reading the same balance).
-7. **Security problems** — hard to give selective access.
+### Manufacturing
+Management of production, inventory, orders, supply chain.
 
-DBMSs address all the above.
+### Banking and Finance
+- Customer information, accounts, loans, and banking transactions
+- Credit card transactions
+- Finance: sales and purchases of financial instruments (e.g., stocks and bonds; storing real-time market data)
+
+### Universities
+Registration, grades.
+
+### Airlines
+Reservations, schedules.
+
+### Telecommunication
+Records of calls, texts, and data usage; generating monthly bills; maintaining balances on prepaid calling cards.
+
+### Web-based services
+- Online retailers: order tracking, customized recommendations
+- Online advertisements
+
+### Document databases
+
+### Navigation systems
+For maintaining the locations of various places of interest along with the exact routes of roads, train systems, buses, etc.
 
 ---
 
-## 1.3 View of Data — Data Models
+## 1.3 Purpose of Database Systems
 
-A **data model** is a collection of tools for describing data, relationships, semantics, and constraints.
+In the early days, database applications were built directly on top of file systems, which leads to:
 
-Types of data models:
-- **Relational model** (focus of this course)
-- **Entity-Relationship (E-R) model** — used for design
-- **Object-based** (object-oriented, object-relational)
-- **Semi-structured** (XML, JSON)
-- Older: **Network**, **Hierarchical**
+### Data redundancy and inconsistency
+Data is stored in multiple file formats, resulting in duplication of information in different files.
 
-### Relational Model
-- Data stored in tables (relations); columns are **attributes**, rows are **tuples/records**.
-- Example: `instructor(ID, name, dept_name, salary)`.
+### Difficulty in accessing data
+Need to write a new program to carry out each new task.
+
+### Data isolation
+Multiple files and formats.
+
+### Integrity problems
+- Integrity constraints (e.g., account balance > 0) become "buried" in program code rather than being stated explicitly
+- Hard to add new constraints or change existing ones
+
+### Atomicity of updates
+- Failures may leave database in an inconsistent state with partial updates carried out
+- **Example:** Transfer of funds from one account to another should either complete or not happen at all.
+
+### Concurrent access by multiple users
+- Concurrent access needed for performance
+- Uncontrolled concurrent accesses can lead to inconsistencies
+- **Example:** Two people reading a balance (say 100) and updating it by withdrawing money (say 50 each) at the same time
+
+### Security problems
+Hard to provide user access to some, but not all, data.
+
+> **Database systems offer solutions to all the above problems.**
 
 ---
 
-## 1.4 Levels of Data Abstraction
+## 1.4 View of Data — Data Models
 
-Three-level architecture:
-- **View level** — multiple views (view 1, view 2, …, view n)
-- **Logical level** — overall logical structure of the database
-- **Physical level** — how data is actually stored on disk
+A **data model** is a collection of tools for describing:
+- Data
+- Data relationships
+- Data semantics
+- Data constraints
+
+### Types of data models
+- **Relational model**
+- **Entity-Relationship data model** (mainly for database design)
+- **Object-based data models** (Object-oriented and Object-relational)
+- **Semi-structured data model** (XML)
+- Other older models:
+  - Network model
+  - Hierarchical model
+
+---
+
+## 1.5 Relational Model
+
+All the data is stored in various tables.
+
+### Example: instructor table
+
+| ID    | name       | dept_name  | salary |
+|-------|------------|------------|--------|
+| 22222 | Einstein   | Physics    | 95000  |
+| 12121 | Wu         | Finance    | 90000  |
+| 32343 | El Said    | History    | 60000  |
+| 45565 | Katz       | Comp. Sci. | 75000  |
+| 98345 | Kim        | Elec. Eng. | 80000  |
+| 76766 | Crick      | Biology    | 72000  |
+| 10101 | Srinivasan | Comp. Sci. | 65000  |
+| 58583 | Califieri  | History    | 62000  |
+| 83821 | Brandt     | Comp. Sci. | 92000  |
+| 15151 | Mozart     | Music      | 40000  |
+| 33456 | Gold       | Physics    | 87000  |
+| 76543 | Singh      | Finance    | 80000  |
+
+(Columns: ID, name, dept_name, salary. Rows are tuples.)
+
+### A Sample Relational Database — department table
+
+| dept_name  | building | budget |
+|------------|----------|--------|
+| Comp. Sci. | Taylor   | 100000 |
+| Biology    | Watson   | 90000  |
+| Elec. Eng. | Taylor   | 85000  |
+| Music      | Packard  | 80000  |
+| Finance    | Painter  | 120000 |
+| History    | Painter  | 50000  |
+| Physics    | Watson   | 70000  |
+
+---
+
+## 1.6 View of Data — Architecture
+
+```
+┌──────────────────────────────────────┐
+│          view level                  │
+│ ┌────────┐ ┌────────┐    ┌────────┐  │
+│ │ view 1 │ │ view 2 │ …  │ view n │  │
+│ └────────┘ └────────┘    └────────┘  │
+└──────────────────────────────────────┘
+              │
+              ▼
+       ┌──────────────┐
+       │ logical level│
+       └──────────────┘
+              │
+              ▼
+       ┌──────────────┐
+       │physical level│
+       └──────────────┘
+```
 
 ### Instances and Schemas
-- **Logical schema** — overall logical structure (analogous to type information).
-- **Physical schema** — overall physical structure.
-- **Instance** — actual content of the database at a point in time (analogous to a value).
+Similar to types and variables in programming languages.
+
+- **Logical Schema** — the overall logical structure of the database.
+  - **Example:** The database consists of information about a set of customers and accounts in a bank and the relationship between them.
+  - Analogous to type information of a variable in a program.
+- **Physical schema** — the overall physical structure of the database.
+- **Instance** — the actual content of the database at a particular point in time.
+  - Analogous to the value of a variable.
 
 ### Physical Data Independence
-The ability to modify the physical schema without changing the logical schema. Applications depend on the logical schema, not the physical one.
+**Physical Data Independence** — the ability to modify the physical schema without changing the logical schema.
+- Applications depend on the logical schema.
+- In general, the interfaces between the various levels and components should be well defined so that changes in some parts do not seriously influence others.
 
 ---
 
-## 1.5 Database Languages
+## 1.7 Database Languages
 
 ### Data Definition Language (DDL)
-Specifies the database schema. Example:
+
+Specification notation for defining the database schema.
+
+**Example:**
 ```sql
 create table instructor (
     ID         char(5),
@@ -83,139 +210,255 @@ create table instructor (
     salary     numeric(8,2)
 )
 ```
-The DDL compiler generates table templates stored in a **data dictionary** (metadata: schema, integrity constraints, authorization).
+
+- DDL compiler generates a set of table templates stored in a **data dictionary**.
+- Data dictionary contains **metadata** (i.e., data about data):
+  - Database schema
+  - Integrity constraints
+    - Primary key (ID uniquely identifies instructors)
+  - Authorization
+    - Who can access what
 
 ### Data Manipulation Language (DML)
-Language for accessing and updating data; also known as **query language**.
+- Language for accessing and updating the data organized by the appropriate data model.
+- DML also known as **query language**.
 
-Two types:
-- **Procedural DML** — specify *what* data is needed AND *how* to get it.
-- **Declarative (non-procedural) DML** — specify *what* data is needed.
+Two basic types:
+- **Procedural DML** — require a user to specify what data are needed and **how** to get those data.
+- **Declarative DML** — require a user to specify what data are needed **without specifying how** to get those data.
 
-Declarative DMLs (e.g., SQL) are usually easier to learn and use.
+Declarative DMLs are usually easier to learn and use than procedural DMLs. Declarative DMLs are also referred to as **non-procedural DMLs**.
 
-### SQL
-- **Non-procedural** query language.
-- A query takes one or more tables as input and returns one table.
-- SQL is **NOT** Turing-complete. To compute complex functions, embed it in a host language.
-- Application programs access databases through **embedded SQL** or **APIs (ODBC/JDBC)**.
+The portion of a DML that involves information retrieval is called a **query language**.
 
-Example:
+### SQL Query Language
+
+SQL query language is **non-procedural**. A query takes as input several tables (possibly only one) and always returns a single table.
+
+**Example:** find all instructors in Comp. Sci. dept:
 ```sql
-select name from instructor where dept_name = 'Comp. Sci.'
+select name
+from instructor
+where dept_name = 'Comp. Sci.'
 ```
 
+- SQL is **NOT** a Turing machine equivalent language.
+- To be able to compute complex functions SQL is usually embedded in some higher-level language.
+- Application programs generally access databases through one of:
+  - Language extensions to allow embedded SQL
+  - Application program interface (e.g., **ODBC/JDBC**) which allow SQL queries to be sent to a database
+
+### Database Access from Application Program
+- Non-procedural query languages such as SQL are not as powerful as a universal Turing machine.
+- SQL does not support actions such as input from users, output to displays, or communication over the network.
+- Such computations and actions must be written in a **host language**, such as C/C++, Java or Python, with embedded SQL queries that access the data in the database.
+- **Application programs** — are programs that are used to interact with the database in this fashion.
+
 ---
 
-## 1.6 Database Design
+## 1.8 Database Design
 
-Process of designing the general structure:
-- **Logical Design** — Decide schema. *Business decision:* what attributes to record. *CS decision:* what relation schemas, how to distribute attributes.
-- **Physical Design** — Decide physical layout.
+The process of designing the general structure of the database:
+
+### Logical Design
+Deciding on the database schema. Database design requires that we find a "good" collection of relation schemas.
+- **Business decision** — What attributes should we record in the database?
+- **Computer Science decision** — What relation schemas should we have and how should the attributes be distributed among the various relation schemas?
+
+### Physical Design
+Deciding on the physical layout of the database.
 
 ---
 
-## 1.7 Database Engine
+## 1.9 Database Engine
 
-Functional components:
-1. **Storage manager**
-2. **Query processor**
-3. **Transaction manager**
+A database system is partitioned into modules that deal with each of the responsibilities of the overall system.
+
+The functional components of a database system can be divided into:
+- The **storage manager**
+- The **query processor component**
+- The **transaction management component**
 
 ### Storage Manager
-Interface between low-level data and queries/applications. Tasks:
-- Interaction with the OS file manager.
-- Efficient store, retrieve, update.
+A program module that provides the interface between the low-level data stored in the database and the application programs and queries submitted to the system.
 
-Components:
-- **Authorization & integrity manager**
+The storage manager is responsible for the following tasks:
+- Interaction with the OS file manager
+- Efficient storing, retrieving and updating of data
+
+The storage manager components include:
+- **Authorization and integrity manager**
 - **Transaction manager**
 - **File manager**
 - **Buffer manager**
 
-Data structures:
-- **Data files** — store the database.
-- **Data dictionary** — metadata.
-- **Indices** — fast access to data items.
+The storage manager implements several data structures as part of the physical system implementation:
+- **Data files** — store the database itself.
+- **Data dictionary** — stores metadata about the structure of the database, in particular the schema of the database.
+- **Indices** — can provide fast access to data items. A database index provides pointers to those data items that hold a particular value.
 
 ### Query Processor
-- **DDL interpreter** — interprets DDL, records definitions in data dictionary.
-- **DML compiler** — translates DML into evaluation plans of low-level instructions; performs **query optimization**.
-- **Query evaluation engine** — executes the low-level instructions.
+The query processor components include:
+- **DDL interpreter** — interprets DDL statements and records the definitions in the data dictionary.
+- **DML compiler** — translates DML statements in a query language into an evaluation plan consisting of low-level instructions that the query evaluation engine understands.
+  - The DML compiler performs **query optimization**; that is, it picks the lowest cost evaluation plan from among the various alternatives.
+- **Query evaluation engine** — executes low-level instructions generated by the DML compiler.
 
-### Query Processing — three steps
-1. **Parsing and translation** → relational-algebra expression.
-2. **Optimization** → execution plan (using statistics).
-3. **Evaluation** → output.
+### Query Processing — Three steps
+1. Parsing and translation
+2. Optimization
+3. Evaluation
+
+```
+query → ┌──────────┐ → relational-algebra → ┌─────────┐ → execution → ┌──────────┐ → query output
+        │parser and│   expression           │optimizer│   plan        │evaluation│
+        │translator│                        └─────────┘               │  engine  │
+        └──────────┘                              ▲                   └──────────┘
+                                                  │                         │
+                                            statistics about data           ▼
+                                                                         data
+```
 
 ### Transaction Management
-- A **transaction** is a collection of operations performing a single logical function.
-- The **transaction-management component** ensures consistency despite system/transaction failures.
-- The **concurrency-control manager** coordinates concurrent transactions.
+- A **transaction** is a collection of operations that performs a single logical function in a database application.
+- **Transaction-management component** ensures that the database remains in a consistent (correct) state despite system failures (e.g., power failures and operating system crashes) and transaction failures.
+- **Concurrency-control manager** controls the interaction among the concurrent transactions, to ensure the consistency of the database.
 
 ---
 
-## 1.8 Database Architecture
+## 1.10 Database Architecture
 
-Architecture types:
-- **Centralized** — one to a few cores, shared memory.
-- **Client-server** — server executes work for multiple clients.
-- **Parallel** — many cores, shared memory; shared disk; shared nothing.
-- **Distributed** — geographic distribution; schema/data heterogeneity.
+### Centralized databases
+- One to a few cores, shared memory.
 
-### Centralized / Shared-Memory Layered Architecture
+### Client-server
+- One server machine executes work on behalf of multiple client machines.
+
+### Parallel databases
+- Many core shared memory
+- Shared disk
+- Shared nothing
+
+### Distributed databases
+- Geographical distribution
+- Schema/data heterogeneity
+
+### Database Architecture (Centralized/Shared-Memory)
 ```
-┌─ Query processor ──────────────────────────────────────┐
-│ DDL interpreter | DML compiler | Query eval. engine    │
-│ Compiler/linker | Application program object code      │
-└────────────────────────────────────────────────────────┘
-┌─ Storage manager ──────────────────────────────────────┐
-│ Buffer manager | File manager                          │
-│ Authorization & integrity manager | Transaction mgr.   │
-└────────────────────────────────────────────────────────┘
-┌─ Disk storage ─────────────────────────────────────────┐
-│ Data | Indices | Data dictionary | Statistical data    │
-└────────────────────────────────────────────────────────┘
+┌─────────── query processor ──────────────────────────────────┐
+│  ┌────────┐ ┌──────┐  ┌─────────┐    ┌───────────────┐       │
+│  │compiler│ │DML   │  │DDL      │    │application    │       │
+│  │and     │ │queries│ │interpreter│  │program object │       │
+│  │linker  │ └──┬───┘  └────┬────┘    │code           │       │
+│  └────┬───┘    ▼           │         └───────┬───────┘       │
+│       │  ┌────────────┐    │                 │               │
+│       └─►│DML compiler│    │                 │               │
+│          │and organizer│   │                 │               │
+│          └──────┬─────┘    │                 │               │
+│                 ▼          ▼                 ▼               │
+│            ┌──────────────────────────────────────┐          │
+│            │      query evaluation engine         │          │
+│            └──────────────────────────────────────┘          │
+└──────────────────────────────────────────────────────────────┘
+┌───────────── storage manager ────────────────────────────────┐
+│  ┌──────────┐ ┌────────┐ ┌─────────────────┐ ┌─────────────┐ │
+│  │  buffer  │ │ file   │ │ authorization   │ │ transaction │ │
+│  │ manager  │ │manager │ │ and integrity   │ │  manager    │ │
+│  │          │ │        │ │    manager      │ │             │ │
+│  └──────────┘ └────────┘ └─────────────────┘ └─────────────┘ │
+└──────────────────────────────────────────────────────────────┘
+                              ▼
+                     ┌────── disk storage ──────┐
+                     │  data | indices |        │
+                     │  data dictionary |       │
+                     │  statistical data        │
+                     └──────────────────────────┘
 ```
 
-### Two-tier vs Three-tier
-- **Two-tier**: application on client invokes DBMS server functionality directly.
-  ```
-  user → application (client) → network → database server
-  ```
-- **Three-tier**: client is a front end; communicates with application server, which talks to the DBMS.
-  ```
-  user → application client → network → application server → DBMS
-  ```
+---
+
+## 1.11 Database Applications
+
+Database applications are usually partitioned into two or three parts.
+
+### Two-tier architecture
+The application resides at the client machine, where it invokes database system functionality at the server machine.
+
+```
+client: [user] → [application]
+                       │
+                    network
+                       │
+server: [database system]
+```
+
+### Three-tier architecture
+The client machine acts as a front end and does not contain any direct database calls.
+- The client end communicates with an application server, usually through a forms interface.
+- The application server in turn communicates with a database system to access data.
+
+```
+client: [user] → [application client]
+                          │
+                       network
+                          │
+server: [application server]
+              │
+        [database system]
+```
 
 ---
 
-## 1.9 Database Users and Administrators
+## 1.12 Database Users
 
-Four categories of users:
-- **Naive users** (tellers, web users) — use application interfaces.
-- **Application programmers** — write application programs.
-- **Sophisticated users** (analysts) — use query tools.
-- **Database administrators (DBA)** — use admin tools.
+Four different types of database-system users:
 
-### DBA Functions
-- Schema definition.
-- Storage structure & access-method definition.
-- Schema and physical-organization modification.
-- Granting authorization for data access.
-- Routine maintenance: backups, free disk space monitoring, jobs running.
+### Naive users
+(tellers, agents, web users) — *use* application interfaces.
+
+### Application programmers
+*Write* application programs.
+
+### Sophisticated users (analysts)
+*Use* query tools.
+
+### Database administrators
+*Use* administration tools.
+
+```
+[naive users]   [app programmers]  [sophisticated]  [DBAs]
+     │                 │                  │             │
+     ▼                 ▼                  ▼             ▼
+[app interfaces] [app programs]    [query tools] [admin tools]
+                       │                  │             │
+                  [compiler/linker]       │             │
+                       │                  ▼             ▼
+                  [app obj code]    [DML queries]  [DDL interpreter]
+                       └──────┬──────────┬──┘
+                              ▼          ▼
+                          [DML compiler and organizer]
+                                    │
+                          [query evaluation engine]
+                                    │
+                          (storage manager / disk storage below)
+```
 
 ---
 
-## 1.10 Likely Exam Questions
+## 1.13 Database Administrator
 
-1. Define DBMS. State its goals.
-2. List the drawbacks of file systems that motivate DBMSs.
-3. Explain the three levels of data abstraction.
-4. Differentiate logical schema vs physical schema vs instance.
-5. What is physical data independence? Why is it important?
-6. Distinguish DDL vs DML; procedural vs declarative DML.
-7. Describe the database engine components (storage, query processor, transaction).
-8. Compare two-tier vs three-tier architectures.
-9. List DBA responsibilities.
-10. What are the four categories of database users?
+A person who has central control over the system is called a **database administrator (DBA)**.
+
+### Functions of a DBA
+- Schema definition
+- Storage structure and access-method definition
+- Schema and physical-organization modification
+- Granting of authorization for data access
+- Routine maintenance
+- Periodically backing up the database
+- Ensuring that enough free disk space is available for normal operations, and upgrading disk space as required
+- Monitoring jobs running on the database
+
+---
+
+## End of Chapter 1
